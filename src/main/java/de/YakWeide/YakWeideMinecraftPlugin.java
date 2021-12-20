@@ -1,6 +1,5 @@
 package de.YakWeide;
 
-import de.YakWeide.SSP.SSPMain;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -15,9 +14,6 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
   @Override
   public void onEnable() {
     getServer().getPluginManager().registerEvents(new Events(), this);
-    SSPMain SSP = new SSPMain();
-    getCommand("SSP").setExecutor(SSP);
-    getServer().getPluginManager().registerEvents(SSP, this);
 
   }
 

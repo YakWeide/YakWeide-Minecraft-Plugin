@@ -1,4 +1,4 @@
-name: YakWeide Minecraft Plugin
+name: YakWeideMinecraftPlugin
 version: '${project.version}'
 main: de.YakWeide.YakWeideMinecraftPlugin
 api-version: 1.18
@@ -9,4 +9,3 @@ website: Yakweide.de
 commands:
   Hello:
   Coords:
-  SSP:
