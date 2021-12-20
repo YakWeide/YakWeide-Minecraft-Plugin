@@ -1,5 +1,6 @@
 package de.YakWeide;
 
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -19,6 +20,7 @@ public class Events implements Listener {
     public void onPlayerQuit(PlayerQuitEvent e){
         Player p = e.getPlayer();
         if(p.getName().equalsIgnoreCase("AquaDrache")){
+            e.quitMessage(PlainTextComponentSerializer.plainText().deserialize("test"));        //Falls das geht kann die zeile unten weg
             e.setQuitMessage(ChatColor.GOLD + "ciaooooooooo");
         }
     }
