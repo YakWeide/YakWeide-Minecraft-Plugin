@@ -1,6 +1,5 @@
 package de.YakWeide.chatApi;
 
-import de.YakWeide.Events;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import java.util.HashMap;
 import java.util.UUID;
@@ -20,10 +19,11 @@ public class ChatApi implements Listener {
   }
 
   public String lastMessage(Player player){
-    if(lastMessageHashMap.get(player.getUniqueId()) == null){
+    String lastMessage = lastMessageHashMap.get(player.getUniqueId());
+    if(lastMessage == null || lastMessage.equals("")){
       return null;
     }else{
-      return lastMessageHashMap.get(player.getUniqueId());
+      return lastMessage;
     }
   }
 
