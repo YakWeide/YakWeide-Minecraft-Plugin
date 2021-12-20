@@ -4,6 +4,7 @@ import de.YakWeide.Events;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import java.util.HashMap;
 import java.util.UUID;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,7 +30,7 @@ public class ChatApi implements Listener {
   @EventHandler
   public void onPlayerChat(AsyncChatEvent event){
     Player p = event.getPlayer();
-    String Message = event.message().toString();
+    String Message = PlainTextComponentSerializer.plainText().serialize(event.message());
     lastMessageHashMap.put(p.getUniqueId(), Message);
   }
 
