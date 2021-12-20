@@ -1,5 +1,6 @@
 package de.YakWeide;
 
+import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -11,10 +12,12 @@ import java.util.ArrayList;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
+  private ChatApi chatApi = null;
+
   @Override
   public void onEnable() {
     getServer().getPluginManager().registerEvents(new Events(), this);
-
+    chatApi = new ChatApi(this);
   }
 
   @Override
@@ -41,6 +44,14 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
           p.sendMessage( player.getName() + "s " +"Koordinaten sind: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
         }
       }
+    }else if(label.equalsIgnoreCase("lastMessage")){
+
+      if(sender instanceof Player) {
+        Player player = (Player) sender;
+        String lastMessage = chatApi.lastMessage(player);
+        player.sendMessage("Your Last Message was: " + lastMessage);
+      }
+
     }
 
     return false;

@@ -9,3 +9,4 @@ website: Yakweide.de
 commands:
   Hello:
   Coords:
+  lastMessage:
