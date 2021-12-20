@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 
 public class ChatApi implements Listener {
 
-  private HashMap<UUID, String> lastMessageHashMap = new HashMap<>();
+  private final HashMap<UUID, String> lastMessageHashMap = new HashMap<>();
 
   public ChatApi(Plugin plugin) {
     Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
@@ -20,18 +20,27 @@ public class ChatApi implements Listener {
 
   public String lastMessage(Player player){
     if(lastMessageHashMap.get(player.getUniqueId()) == null){
-      return "Error you haven't send a Message yet";
+      return null;
     }else{
       return lastMessageHashMap.get(player.getUniqueId());
     }
   }
 
-
   @EventHandler
   public void onPlayerChat(AsyncChatEvent event){
     Player p = event.getPlayer();
-    String Message = String.valueOf(event.originalMessage());
+    String Message = event.message().toString();
     lastMessageHashMap.put(p.getUniqueId(), Message);
+  }
+
+  public String nextMessage(Player player){
+    String lastMessage = "";
+    if(lastMessage(player) != null) lastMessage = lastMessage(player);
+    player.sendMessage("Waiting for next Message...");
+    while(true){
+      if(!lastMessage(player).equals(lastMessage)) break;
+    }
+    return lastMessage(player);
   }
 
 
