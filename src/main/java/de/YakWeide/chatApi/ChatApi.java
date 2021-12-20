@@ -13,12 +13,12 @@ import org.bukkit.event.Listener;
 public class ChatApi implements Listener {
 
   //Singleton --> https://www.geeksforgeeks.org/singleton-class-java/
-  private static ChatApi chatApi = null;
+  private static ChatApi chatApi_instance = null;
   public static ChatApi getInstance()
   {
-    if (chatApi == null)
-      chatApi = new ChatApi();
-    return chatApi;
+    if (chatApi_instance == null)
+      chatApi_instance = new ChatApi();
+    return chatApi_instance;
   }
 
   private final HashMap<UUID, String> lastMessageHashMap = new HashMap<>();
