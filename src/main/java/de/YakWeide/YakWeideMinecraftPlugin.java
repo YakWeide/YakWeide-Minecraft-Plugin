@@ -50,7 +50,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
         Player player = (Player) sender;
         String lastMessage = "";
         if(ChatApi.getInstance().lastMessage(player) == null){
-          player.sendMessage("You haven sent a Message yet");
+          player.sendMessage("You havent sent a Message yet");
         }else {
           lastMessage = ChatApi.getInstance().lastMessage(player);
         }
