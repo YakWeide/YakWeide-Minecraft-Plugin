@@ -1,0 +1,12 @@
+name: YakWeide Minecraft Plugin
+version: '${project.version}'
+main: de.YakWeide.YakWeideMinecraftPlugin
+api-version: 1.18
+authors: [ JanReitz ]
+description: minecraft plugin
+website: Yakweide.de
+
+commands:
+  Hello:
+  Coords:
+  SSP:
