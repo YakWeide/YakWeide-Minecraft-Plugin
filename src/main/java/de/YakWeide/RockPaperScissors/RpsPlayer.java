@@ -31,6 +31,6 @@ public abstract class RpsPlayer {
     }
 
     // setter, overwrite in RpsHuman and RpsComputer
-    public abstract void setHand();
+    public abstract boolean setHand();
 
 }

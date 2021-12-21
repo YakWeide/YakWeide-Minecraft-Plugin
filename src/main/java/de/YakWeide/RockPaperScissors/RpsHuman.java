@@ -18,9 +18,13 @@ public class RpsHuman extends RpsPlayer {
     }
 
     //set hand of a Rps Human using input from minecraft text chat
-    public void setHand(){
+    public boolean setHand(){
         Bukkit.getPlayer(this.getId()).sendMessage("Rock, Paper or Scissors?");
         String input = chatApi.nextMessage(Bukkit.getPlayer(this.getId()));
+        if(input == null){
+            Bukkit.getPlayer(this.getId()).sendMessage("Rock Paper Scissors was canceled because no message was sent within 60 seconds");
+            return false;
+        }
         if(input.equalsIgnoreCase("rock") ){
             this.hand = RpsOptions.ROCK;
         }
@@ -29,7 +33,10 @@ public class RpsHuman extends RpsPlayer {
         }
         else if(input.equalsIgnoreCase("scissors")){
             this.hand = RpsOptions.SCISSORS;
+        }else{
+            Bukkit.getPlayer(this.getId()).sendMessage("Rock Paper Scissors canceled because an incorrect message was sent");
+            return false;
         }
-
+        return true;
     }
 }

@@ -10,7 +10,7 @@ public class RpsComputer extends RpsPlayer {
     }
 
     //sets hand of computer using a random number generator
-    public void setHand(){
+    public boolean setHand(){
         Random rand = new Random();
         int random = rand.nextInt(3);
         if(random == 0){
@@ -22,6 +22,6 @@ public class RpsComputer extends RpsPlayer {
         else if(random == 2){
             this.hand = RpsOptions.SCISSORS;
         }
-
+        return true;
     }
 }

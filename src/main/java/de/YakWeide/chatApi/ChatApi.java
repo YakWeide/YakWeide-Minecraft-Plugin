@@ -47,7 +47,7 @@ public class ChatApi implements Listener {
     if(lastMessage(player) != null) lastMessage = lastMessage(player);
     player.sendMessage("Waiting for next Message...");
     Timestamp start = Timestamp.from(Instant.now());
-    while (lastMessage(player).equals(lastMessage)) {
+    while (lastMessage(player) == null || lastMessage(player).equals(lastMessage)) {
       Timestamp loop = Timestamp.from(Instant.now());
 
       if (loop.getNanos() - start.getNanos() == 60000000)

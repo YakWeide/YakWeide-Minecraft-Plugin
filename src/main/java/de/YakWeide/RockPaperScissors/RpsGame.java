@@ -14,15 +14,17 @@ public class RpsGame {
         this.winner = winner;
     }
 
-    public void play(RpsPlayer p1, RpsPlayer p2){
+    public boolean play(RpsPlayer p1, RpsPlayer p2){
 
-        p1.setHand();
-        p2.setHand();
-        determineWinner(p1, p2);
-        returnEnemyHand(p1,p2);
-        returnWinner(p1,p2);
-
-
+        if(p1.setHand()){
+            if(p2.setHand()){
+                determineWinner(p1, p2);
+                returnEnemyHand(p1,p2);
+                returnWinner(p1,p2);
+                return true;
+            }
+        }
+        return false;
     }
 
     //determine winner of a RpsGame set winner attribute of game, null if draw

@@ -13,7 +13,7 @@ public class RpsMain implements CommandExecutor {
             RpsGame game = new RpsGame();
             if(!(sender instanceof Player)){ sender.sendMessage("The command sender has to be a player!");}
             Player p1 = (Player)sender;
-            if(args[0].equalsIgnoreCase("computer") || args[0].equalsIgnoreCase("c")){
+            if(args.length > 0 && (args[0].equalsIgnoreCase("computer") || args[0].equalsIgnoreCase("c"))){
                 RpsHuman human = new RpsHuman(p1.getUniqueId());
                 RpsComputer computer = new RpsComputer();
                 game.play(human, computer);
