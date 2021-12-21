@@ -39,4 +39,21 @@ public class RpsHuman extends RpsPlayer {
         }
         return true;
     }
+
+    //challenge an other player to rps, true if accepted, false if declined
+    public boolean challenge(RpsPlayer p2){
+        Bukkit.getPlayer(p2.getId()).sendMessage(Bukkit.getPlayer(this.getId()).getName() + " challenges you to a game of Rock, Paper, Scissors (y/n)");
+        Bukkit.getPlayer(this.getId()).sendMessage("Waiting for oponents answer!");
+        String input;
+        ChatApi chatApi = ChatApi.getInstance();
+        input = chatApi.nextMessage(Bukkit.getPlayer(p2.getId()));
+        if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")){
+            Bukkit.getPlayer(this.getId()).sendMessage(Bukkit.getPlayer(p2.getId()).getName() + " has accepted!");
+            return true;
+        }
+        else{
+            Bukkit.getPlayer(this.getId()).sendMessage(Bukkit.getPlayer(p2.getId()).getName() + " has declined!");
+            return false;
+        }
+    }
 }
