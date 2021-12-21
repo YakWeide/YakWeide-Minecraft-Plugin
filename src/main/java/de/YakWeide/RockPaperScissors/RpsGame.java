@@ -1,4 +1,7 @@
 package de.YakWeide.RockPaperScissors;
+
+import org.bukkit.Bukkit;
+
 //play a game of Rock Paper Scissors in Minecraft
 public class RpsGame {
     private RpsPlayer winner;
@@ -38,8 +41,11 @@ public class RpsGame {
             this.setWinner(p1);
         }
     }
-
+// prints the winner to both players / to the player playing against computer, note: p1 is always a human
     private void returnWinner(RpsPlayer p1, RpsPlayer p2){
-        // todo: returns winner of the Rock Paper Scissors game to both players / to the player playing against computer
+        Bukkit.getPlayer(p1.getId()).sendMessage(this.getWinner().getName() + "has won!");
+        if(!p2.getId().equals(null)){
+            Bukkit.getPlayer(p2.getId()).sendMessage(this.getWinner().getName() + "has won!");
+        }
     }
 }

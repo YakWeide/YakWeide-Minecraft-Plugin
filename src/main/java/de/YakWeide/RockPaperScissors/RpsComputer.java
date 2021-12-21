@@ -4,6 +4,11 @@ import java.util.Random;
 
 public class RpsComputer extends RpsPlayer {
 
+    public RpsComputer() {
+        this.id = null;
+        this.name = "The computer";
+    }
+
     //sets hand of computer using a random number generator
     public void setHand(){
         Random rand = new Random();
