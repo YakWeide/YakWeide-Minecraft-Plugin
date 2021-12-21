@@ -2,13 +2,13 @@ package de.YakWeide.RockPaperScissors;
 
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
-public class RpsHuman {
+public class RpsHuman extends RpsPlayer {
     // minecraft player id
     UUID id;
+
     private ChatApi chatApi = null;
 
     public UUID getId() {
@@ -23,12 +23,18 @@ public class RpsHuman {
         this.id = id;
     }
 
-
-    public void setHand(Player player){
-        player.sendMessage("Rock, Paper or Scissors?");
-        String input = chatApi.nextMessage(player);
+    //set hand of a Rps Human using input from minecraft text chat
+    public void setHand(){
+        Bukkit.getPlayer(this.getId()).sendMessage("Rock, Paper or Scissors?");
+        String input = chatApi.nextMessage(Bukkit.getPlayer(this.getId()));
         if(input.equalsIgnoreCase("rock") ){
-            // TODO: implement setHand method ( get input from minecraft player and set hand attribute of RpsHuman)
+            this.hand = RpsOptions.ROCK;
+        }
+        else if(input.equalsIgnoreCase("paper")){
+            this.hand = RpsOptions.PAPER;
+        }
+        else if(input.equalsIgnoreCase("scissors")){
+            this.hand = RpsOptions.SCISSORS;
         }
 
     }
