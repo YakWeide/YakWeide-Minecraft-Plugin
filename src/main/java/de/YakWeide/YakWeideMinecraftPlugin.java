@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -14,9 +15,11 @@ import org.jetbrains.annotations.NotNull;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
+  public static Plugin plugin;
 
   @Override
   public void onEnable() {
+    plugin = this;
     getServer().getPluginManager().registerEvents(new Events(), this);
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
     this.getCommand("rps").setExecutor(new RpsMain());
@@ -24,7 +27,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
   @Override
   public void onDisable() {
-    // Plugin shutdown logic
+    plugin = null;
   }
 
 

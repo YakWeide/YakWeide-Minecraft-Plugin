@@ -14,9 +14,15 @@ public class RpsMain implements CommandExecutor {
             if(!(sender instanceof Player)){ sender.sendMessage("The command sender has to be a player!");}
             Player p1 = (Player)sender;
             if(args.length > 0 && (args[0].equalsIgnoreCase("computer") || args[0].equalsIgnoreCase("c"))){
-                RpsHuman human = new RpsHuman(p1.getUniqueId());
-                RpsComputer computer = new RpsComputer();
-                game.play(human, computer);
+                Thread thread = new Thread("nextMessageThread"){
+                    @Override
+                    public void run(){
+                        RpsHuman human = new RpsHuman(p1.getUniqueId());
+                        RpsComputer computer = new RpsComputer();
+                        game.play(human, computer);
+                    }
+                };
+                thread.start();
             }
             else{
                 p1.sendMessage("Falsche Eingabe!");
