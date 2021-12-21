@@ -40,10 +40,10 @@ public class RpsGame {
             this.setWinner(p1);
         }
         else if(p1.getHand().equals(RpsOptions.SCISSORS) && p2.getHand().equals(RpsOptions.PAPER)){
-            this.setWinner(p2);
+            this.setWinner(p1);
         }
         else{
-            this.setWinner(p1);
+            this.setWinner(p2);
         }
     }
 // prints the winner to both players / to the player playing against computer, note: p1 is always a human
