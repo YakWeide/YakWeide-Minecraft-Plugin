@@ -19,6 +19,7 @@ public class RpsGame {
         p1.setHand();
         p2.setHand();
         determineWinner(p1, p2);
+        returnWinner(p1,p2);
 
 
     }
@@ -29,6 +30,7 @@ public class RpsGame {
             this.setWinner(null);
         }
         else if(p1.getHand().equals(RpsOptions.ROCK) && p2.getHand().equals(RpsOptions.SCISSORS)){
+
             this.setWinner(p1);
         }
         else if(p1.getHand().equals(RpsOptions.PAPER) && p2.getHand().equals(RpsOptions.ROCK)){
@@ -43,9 +45,25 @@ public class RpsGame {
     }
 // prints the winner to both players / to the player playing against computer, note: p1 is always a human
     private void returnWinner(RpsPlayer p1, RpsPlayer p2){
+        if(this.getWinner() == null){
+            Bukkit.getPlayer(p1.getId()).sendMessage("Draw!");
+            if(!(p2.getId() == null)){
+                Bukkit.getPlayer(p2.getId()).sendMessage("Draw!");
+            }
+        }
         Bukkit.getPlayer(p1.getId()).sendMessage(this.getWinner().getName() + "has won!");
-        if(!p2.getId().equals(null)){
+        if(p2 instanceof RpsHuman){
             Bukkit.getPlayer(p2.getId()).sendMessage(this.getWinner().getName() + "has won!");
+        }
+        else{
+            return;
+        }
+    }
+    // returns the hand of the opponent to the human
+    private void returnEnemyHand(RpsPlayer p1, RpsPlayer p2){
+        Bukkit.getPlayer(p1.getId()).sendMessage(p2.getName() + " takes: " + p2.getHand());
+        if(p2 instanceof RpsHuman){
+            Bukkit.getPlayer(p2.getId()).sendMessage(p1.getName() + " takes:" + p1.getHand());
         }
     }
 }

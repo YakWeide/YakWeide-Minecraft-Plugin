@@ -1,5 +1,6 @@
 package de.YakWeide;
 
+import de.YakWeide.RockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,6 +19,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
   public void onEnable() {
     getServer().getPluginManager().registerEvents(new Events(), this);
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
+    this.getCommand("rps").setExecutor(new RpsMain());
   }
 
   @Override

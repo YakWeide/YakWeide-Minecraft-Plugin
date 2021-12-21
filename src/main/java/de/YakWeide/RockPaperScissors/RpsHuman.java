@@ -8,13 +8,13 @@ import java.util.UUID;
 public class RpsHuman extends RpsPlayer {
     // minecraft player id
 
-    private ChatApi chatApi = null;
+    private ChatApi chatApi = ChatApi.getInstance();
 
 
 
-    public RpsHuman(UUID id, String name) {
+    public RpsHuman(UUID id) {
         this.id = id;
-        name = Bukkit.getPlayer(id).getName();
+        this.name = Bukkit.getPlayer(id).getName();
     }
 
     //set hand of a Rps Human using input from minecraft text chat
