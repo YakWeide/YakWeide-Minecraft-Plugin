@@ -19,6 +19,7 @@ public class RpsGame {
         p1.setHand();
         p2.setHand();
         determineWinner(p1, p2);
+        returnEnemyHand(p1,p2);
         returnWinner(p1,p2);
 
 
@@ -54,9 +55,6 @@ public class RpsGame {
         Bukkit.getPlayer(p1.getId()).sendMessage(this.getWinner().getName() + "has won!");
         if(p2 instanceof RpsHuman){
             Bukkit.getPlayer(p2.getId()).sendMessage(this.getWinner().getName() + "has won!");
-        }
-        else{
-            return;
         }
     }
     // returns the hand of the opponent to the human

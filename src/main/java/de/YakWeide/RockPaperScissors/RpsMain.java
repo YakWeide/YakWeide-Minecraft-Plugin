@@ -18,6 +18,9 @@ public class RpsMain implements CommandExecutor {
                 RpsComputer computer = new RpsComputer();
                 game.play(human, computer);
             }
+            else{
+                p1.sendMessage("Falsche Eingabe!");
+            }
         }
         return false;
     }
