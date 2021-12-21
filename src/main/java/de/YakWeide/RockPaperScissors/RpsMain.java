@@ -1,6 +1,5 @@
 package de.YakWeide.RockPaperScissors;
 
-import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public class RpsMain implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, String label, String[] args) {
-        // options for rps command: /rps computer, /rps playername, if computer: starts a rps game against computer, if {playername} ask challenged player if it wants to play if yes: start game against player
+        // options for rps command: /rps computer, /rps player name, if computer: starts a rps game against computer, if {player name} ask challenged player if it wants to play if yes: start game against player
         if(label.equalsIgnoreCase("rps")){
             RpsGame game = new RpsGame();
             if(!(sender instanceof Player)){ sender.sendMessage("The command sender has to be a player!");}
@@ -22,8 +21,8 @@ public class RpsMain implements CommandExecutor {
                 RpsComputer computer = new RpsComputer();
                 game.play(human, computer);
             }
-            else if(args.length > 0 && !(args[0].equals(null))){
-                ArrayList<Player> playerList = new ArrayList<Player>(Bukkit.getOnlinePlayers());
+            else if(args.length > 0){
+                ArrayList<Player> playerList = new ArrayList<>(Bukkit.getOnlinePlayers());
                 for(int i = 0; i < Bukkit.getOnlinePlayers().size(); i++){
                     Player p2 = playerList.get(i);
                     if(p2.getName().equalsIgnoreCase(args[0])){

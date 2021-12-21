@@ -8,7 +8,7 @@ import java.util.UUID;
 public class RpsHuman extends RpsPlayer {
     // minecraft player id
 
-    private ChatApi chatApi = ChatApi.getInstance();
+    private final ChatApi chatApi = ChatApi.getInstance();
 
 
 
@@ -40,10 +40,10 @@ public class RpsHuman extends RpsPlayer {
         return true;
     }
 
-    //challenge an other player to rps, true if accepted, false if declined
+    //challenge another player to rps, true if accepted, false if declined
     public boolean challenge(RpsPlayer p2){
         Bukkit.getPlayer(p2.getId()).sendMessage(Bukkit.getPlayer(this.getId()).getName() + " challenges you to a game of Rock, Paper, Scissors (y/n)");
-        Bukkit.getPlayer(this.getId()).sendMessage("Waiting for oponents answer!");
+        Bukkit.getPlayer(this.getId()).sendMessage("Waiting for " + p2.getName() + "s answer!");
         String input;
         ChatApi chatApi = ChatApi.getInstance();
         input = chatApi.nextMessage(Bukkit.getPlayer(p2.getId()));
