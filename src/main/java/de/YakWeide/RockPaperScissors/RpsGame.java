@@ -1,6 +1,7 @@
 package de.YakWeide.RockPaperScissors;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 //play a game of Rock Paper Scissors in Minecraft
 public class RpsGame {
@@ -49,21 +50,21 @@ public class RpsGame {
 // prints the winner to both players / to the player playing against computer, note: p1 is always a human
     private void returnWinner(RpsPlayer p1, RpsPlayer p2){
         if(this.getWinner() == null){
-            Bukkit.getPlayer(p1.getId()).sendMessage("Draw!");
+            Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + "Draw!");
             if(!(p2.getId() == null)){
-                Bukkit.getPlayer(p2.getId()).sendMessage("Draw!");
+                Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + "Draw!");
             }
         }
-        Bukkit.getPlayer(p1.getId()).sendMessage(this.getWinner().getName() + " has won!");
+        Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + this.getWinner().getName() + " has won!");
         if(p2 instanceof RpsHuman){
-            Bukkit.getPlayer(p2.getId()).sendMessage(this.getWinner().getName() + " has won!");
+            Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + this.getWinner().getName() + " has won!");
         }
     }
     // returns the hand of the opponent to the human
     private void returnEnemyHand(RpsPlayer p1, RpsPlayer p2){
-        Bukkit.getPlayer(p1.getId()).sendMessage(p2.getName() + " takes: " + p2.getHand());
+        Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + p2.getName() + " takes: " + p2.getHand());
         if(p2 instanceof RpsHuman){
-            Bukkit.getPlayer(p2.getId()).sendMessage(p1.getName() + " takes:" + p1.getHand());
+            Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + p1.getName() + " takes:" + p1.getHand());
         }
     }
 }

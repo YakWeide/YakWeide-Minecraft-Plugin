@@ -1,6 +1,7 @@
 package de.YakWeide.RockPaperScissors;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -41,10 +42,10 @@ public class RpsMain implements CommandExecutor {
                         return false;
                     }
                 }
-                p1.sendMessage("There is no such player online.");
+                p1.sendMessage(ChatColor.RED + "There is no such player online.");
             }
             else{
-                p1.sendMessage("Falsche Eingabe!");
+                p1.sendMessage(ChatColor.RED + "Falsche Eingabe!");
             }
         }
         return false;
