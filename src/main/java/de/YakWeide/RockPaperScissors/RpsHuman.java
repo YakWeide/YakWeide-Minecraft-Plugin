@@ -2,6 +2,7 @@ package de.YakWeide.RockPaperScissors;
 
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 
 import java.util.UUID;
 
@@ -19,10 +20,10 @@ public class RpsHuman extends RpsPlayer {
 
     //set hand of a Rps Human using input from minecraft text chat
     public boolean setHand(){
-        Bukkit.getPlayer(this.getId()).sendMessage("Rock, Paper or Scissors?");
+        Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.GOLD + "Rock, Paper or Scissors?");
         String input = chatApi.nextMessage(Bukkit.getPlayer(this.getId()));
         if(input == null){
-            Bukkit.getPlayer(this.getId()).sendMessage("Rock Paper Scissors was canceled because no message was sent within 60 seconds");
+            Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.RED + "Rock Paper Scissors was canceled because no message was sent within 60 seconds");
             return false;
         }
         if(input.equalsIgnoreCase("rock") ){
@@ -34,7 +35,7 @@ public class RpsHuman extends RpsPlayer {
         else if(input.equalsIgnoreCase("scissors")){
             this.hand = RpsOptions.SCISSORS;
         }else{
-            Bukkit.getPlayer(this.getId()).sendMessage("Rock Paper Scissors canceled because an incorrect message was sent");
+            Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.RED + "Rock Paper Scissors canceled because an incorrect message was sent");
             return false;
         }
         return true;
@@ -42,17 +43,17 @@ public class RpsHuman extends RpsPlayer {
 
     //challenge another player to rps, true if accepted, false if declined
     public boolean challenge(RpsPlayer p2){
-        Bukkit.getPlayer(p2.getId()).sendMessage(Bukkit.getPlayer(this.getId()).getName() + " challenges you to a game of Rock, Paper, Scissors (y/n)");
-        Bukkit.getPlayer(this.getId()).sendMessage("Waiting for " + p2.getName() + "s answer!");
+        Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + Bukkit.getPlayer(this.getId()).getName() + " challenges you to a game of Rock, Paper, Scissors (y/n)");
+        Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.GOLD + "Waiting for " + p2.getName() + "s answer!");
         String input;
         ChatApi chatApi = ChatApi.getInstance();
         input = chatApi.nextMessage(Bukkit.getPlayer(p2.getId()));
         if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")){
-            Bukkit.getPlayer(this.getId()).sendMessage(Bukkit.getPlayer(p2.getId()).getName() + " has accepted!");
+            Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.GREEN + Bukkit.getPlayer(p2.getId()).getName() + " has accepted!");
             return true;
         }
         else{
-            Bukkit.getPlayer(this.getId()).sendMessage(Bukkit.getPlayer(p2.getId()).getName() + " has declined!");
+            Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.RED + Bukkit.getPlayer(p2.getId()).getName() + " has declined!");
             return false;
         }
     }

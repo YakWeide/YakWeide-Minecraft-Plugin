@@ -54,9 +54,9 @@ public class RpsGame {
                 Bukkit.getPlayer(p2.getId()).sendMessage("Draw!");
             }
         }
-        Bukkit.getPlayer(p1.getId()).sendMessage(this.getWinner().getName() + "has won!");
+        Bukkit.getPlayer(p1.getId()).sendMessage(this.getWinner().getName() + " has won!");
         if(p2 instanceof RpsHuman){
-            Bukkit.getPlayer(p2.getId()).sendMessage(this.getWinner().getName() + "has won!");
+            Bukkit.getPlayer(p2.getId()).sendMessage(this.getWinner().getName() + " has won!");
         }
     }
     // returns the hand of the opponent to the human
