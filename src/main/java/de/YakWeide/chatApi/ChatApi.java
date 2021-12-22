@@ -72,6 +72,7 @@ public class ChatApi implements Listener {
   //Returns the next message of the given player, returns null after 60 seconds without a message
   public String nextMessage(Player player){
     String lastMessage = "";
+    lastMessageHashMap.put(player.getUniqueId(), null);
     if(lastMessage(player) != null) lastMessage = lastMessage(player);
     player.sendMessage("Waiting for next Message...");
     long start = System.currentTimeMillis();
