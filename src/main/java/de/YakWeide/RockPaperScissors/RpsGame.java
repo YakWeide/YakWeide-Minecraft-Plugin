@@ -64,7 +64,7 @@ public class RpsGame {
     private void returnEnemyHand(RpsPlayer p1, RpsPlayer p2){
         Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + p2.getName() + " takes: " + p2.getHand());
         if(p2 instanceof RpsHuman){
-            Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + p1.getName() + " takes:" + p1.getHand());
+            Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + p1.getName() + " takes: " + p1.getHand());
         }
     }
 }

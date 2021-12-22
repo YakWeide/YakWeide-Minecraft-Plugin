@@ -3,6 +3,7 @@ package de.YakWeide;
 import de.YakWeide.RockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
   public static Plugin plugin;
+  public static String prefix = ChatColor.GOLD + " ";
 
   @Override
   public void onEnable() {
