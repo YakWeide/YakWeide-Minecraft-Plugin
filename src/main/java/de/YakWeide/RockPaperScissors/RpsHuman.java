@@ -35,7 +35,7 @@ public class RpsHuman extends RpsPlayer {
         else if(input.equalsIgnoreCase("scissors")){
             this.hand = RpsOptions.SCISSORS;
         }else{
-            Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.RED + "Rock Paper Scissors canceled because an incorrect message was sent");
+            Bukkit.getPlayer(this.getId()).sendMessage(ChatColor.RED + "Rock Paper Scissors canceled because an incorrect message was sent " + input);
             return false;
         }
         return true;
