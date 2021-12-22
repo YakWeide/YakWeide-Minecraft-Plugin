@@ -1,11 +1,14 @@
 package de.YakWeide;
 
+import de.YakWeide.RockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -13,16 +16,20 @@ import org.jetbrains.annotations.NotNull;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
+  public static Plugin plugin;
+  public static String prefix = ChatColor.GOLD + " ";
 
   @Override
   public void onEnable() {
+    plugin = this;
     getServer().getPluginManager().registerEvents(new Events(), this);
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
+    this.getCommand("rps").setExecutor(new RpsMain());
   }
 
   @Override
   public void onDisable() {
-    // Plugin shutdown logic
+    plugin = null;
   }
 
 
