@@ -54,6 +54,7 @@ public class ChatApi implements Listener {
 
     //Returns the next message of the given player, returns null after 60 seconds without a message
     public String nextMessage(Player player) {
+        if(Bukkit.getServer().isPrimaryThread()) return YakWeideMinecraftPlugin.prefix + "ChatApi.nextMessage() was aborted because it was called from the primary thread";
         nextMessageActive = true;
         String lastMessage = "";
         lastMessageHashMap.put(player.getUniqueId(), null);
