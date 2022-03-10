@@ -72,7 +72,9 @@ public class ChatApi implements Listener {
                 Thread.currentThread().interrupt();
             }
 
+
         }
+        nextMessageActive = false;
         return lastMessage(player);
     }
 

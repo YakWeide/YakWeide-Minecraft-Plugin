@@ -1,5 +1,6 @@
 package de.YakWeide.RockPaperScissors;
 
+import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
