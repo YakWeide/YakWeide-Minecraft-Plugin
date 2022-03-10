@@ -27,17 +27,33 @@ public class RpsMain implements CommandExecutor {
                     }
                 };
                 thread.start();
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
             else if(args.length > 0){
                 ArrayList<Player> playerList = new ArrayList<>(Bukkit.getOnlinePlayers());
                 for(int i = 0; i < Bukkit.getOnlinePlayers().size(); i++){
                     Player p2 = playerList.get(i);
                     if(p2.getName().equalsIgnoreCase(args[0])){
-                        RpsHuman human1 = new RpsHuman(p1.getUniqueId());
-                        RpsHuman human2 = new RpsHuman(p2.getUniqueId());
-                        boolean challenge = human1.challenge(human2);
-                        if(challenge){
-                            game.play(human1, human2);
+                        Thread thread = new Thread("nextMessageThread"){
+                            @Override
+                            public void run(){
+                                RpsHuman human1 = new RpsHuman(p1.getUniqueId());
+                                RpsHuman human2 = new RpsHuman(p2.getUniqueId());
+                                boolean challenge = human1.challenge(human2);
+                                if(challenge){
+                                    game.play(human1, human2);
+                                }
+                            }
+                        };
+                        thread.start();
+                        try {
+                            thread.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
                         return false;
                     }

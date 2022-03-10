@@ -16,7 +16,6 @@ public class RpsGame {
     }
 
     public boolean play(RpsPlayer p1, RpsPlayer p2){
-
         if(p1.setHand()){
             if(p2.setHand()){
                 determineWinner(p1, p2);
