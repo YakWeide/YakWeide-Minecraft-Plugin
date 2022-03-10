@@ -12,17 +12,12 @@ public abstract class RpsPlayer {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public UUID getId() {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+
     protected RpsOptions hand;
     // getter
 

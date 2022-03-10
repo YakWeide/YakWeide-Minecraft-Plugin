@@ -1,11 +1,12 @@
 package de.YakWeide.RockPaperScissors;
 
 import de.YakWeide.chatApi.ChatApi;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 
 //play a game of Rock Paper Scissors in Minecraft
 public class RpsGame {
+
+    private final ChatApi chatApi = ChatApi.getInstance();
+
     private RpsPlayer winner;
 
     public RpsPlayer getWinner() {
@@ -16,16 +17,14 @@ public class RpsGame {
         this.winner = winner;
     }
 
-    public boolean play(RpsPlayer p1, RpsPlayer p2){
+    public void play(RpsPlayer p1, RpsPlayer p2){
         if(p1.setHand()){
             if(p2.setHand()){
                 determineWinner(p1, p2);
                 returnEnemyHand(p1,p2);
                 returnWinner(p1,p2);
-                return true;
             }
         }
-        return false;
     }
 
     //determine winner of a RpsGame set winner attribute of game, null if draw
@@ -50,21 +49,21 @@ public class RpsGame {
 // prints the winner to both players / to the player playing against computer, note: p1 is always a human
     private void returnWinner(RpsPlayer p1, RpsPlayer p2){
         if(this.getWinner() == null){
-            Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + "Draw!");
+            chatApi.sendMessage(p1.getId(), "Draw!");
             if(!(p2.getId() == null)){
-                Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + "Draw!");
+                chatApi.sendMessage(p2.getId(), "Draw!");
             }
         }
-        Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + this.getWinner().getName() + " has won!");
+        chatApi.sendMessage(p1.getId(), chatApi.playerName(this.getWinner().getId()) + ChatApi.prefixColor + " has won!");
         if(p2 instanceof RpsHuman){
-            Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + this.getWinner().getName() + " has won!");
+            chatApi.sendMessage(p2.getId(), chatApi.playerName(this.getWinner().getId()) + ChatApi.prefixColor + " has won!");
         }
     }
     // returns the hand of the opponent to the human
     private void returnEnemyHand(RpsPlayer p1, RpsPlayer p2){
-        Bukkit.getPlayer(p1.getId()).sendMessage(ChatColor.GOLD + p2.getName() + " takes: " + p2.getHand());
+        chatApi.sendMessage(p1.getId(), chatApi.playerName(p2.getId()) + ChatApi.prefixColor + "takes: " + p2.getHand());
         if(p2 instanceof RpsHuman){
-            Bukkit.getPlayer(p2.getId()).sendMessage(ChatColor.GOLD + p1.getName() + " takes: " + p1.getHand());
+            chatApi.sendMessage(p2.getId(), chatApi.playerName(p2.getId()) + ChatApi.prefixColor + "takes: " + p2.getHand());
         }
     }
 }

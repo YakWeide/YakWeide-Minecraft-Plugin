@@ -1,7 +1,7 @@
 package de.YakWeide;
 
+import de.YakWeide.chatApi.ChatApi;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,11 +10,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class Events implements Listener {
+
+    private final ChatApi chatApi = ChatApi.getInstance();
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e){
         Player p = e.getPlayer();
         Location location = p.getLocation();
-        p.sendMessage( ChatColor.AQUA + "Todeskoordinaten: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
+        chatApi.sendMessage(p, ChatApi.badColor + "Todeskoordinaten: " + ChatApi.prefixColor + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e){

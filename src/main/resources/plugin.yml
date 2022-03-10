@@ -2,7 +2,7 @@ name: YakWeideMinecraftPlugin
 version: '${project.version}'
 main: de.YakWeide.YakWeideMinecraftPlugin
 api-version: 1.18
-authors: [ JanReitz ]
+authors: [ Tim Lisemer, JanReitz ]
 description: minecraft plugin
 website: Yakweide.de
 

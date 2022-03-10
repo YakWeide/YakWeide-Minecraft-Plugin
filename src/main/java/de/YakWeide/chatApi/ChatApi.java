@@ -1,24 +1,25 @@
 package de.YakWeide.chatApi;
 
-import de.YakWeide.YakWeideMinecraftPlugin;
 import io.papermc.paper.event.player.AsyncChatEvent;
-
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.HashMap;
 import java.util.UUID;
-
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 
 public class ChatApi implements Listener {
 
     //Singleton --> https://www.geeksforgeeks.org/singleton-class-java/
     private static ChatApi chatApi_instance = null;
+
+    public static final ChatColor prefixColor = ChatColor.GRAY;
+    private static final String prefix = prefixColor + "[" + ChatColor.GOLD + "YakWeide" + prefixColor + "] ";
+    public static final ChatColor goodColor = ChatColor.GREEN;
+    public static final ChatColor badColor = ChatColor.RED;
+    private static final ChatColor playerColor = ChatColor.GOLD;
 
     public static ChatApi getInstance() {
         if (chatApi_instance == null)
@@ -46,7 +47,7 @@ public class ChatApi implements Listener {
         String Message = PlainTextComponentSerializer.plainText().serialize(event.message());
         lastMessageHashMap.put(p.getUniqueId(), Message);
         if (nextMessageActive) {
-            p.sendMessage(YakWeideMinecraftPlugin.prefix + Message);
+            sendMessage(p, Message);
             event.setCancelled(true);
         }
     }
@@ -54,30 +55,55 @@ public class ChatApi implements Listener {
 
     //Returns the next message of the given player, returns null after 60 seconds without a message
     public String nextMessage(Player player) {
-        if(Bukkit.getServer().isPrimaryThread()) return YakWeideMinecraftPlugin.prefix + "ChatApi.nextMessage() was aborted because it was called from the primary thread";
+        if(Bukkit.getServer().isPrimaryThread()){
+            sendMessage(player, badColor + "ChatApi.nextMessage() was aborted because it was called from the primary thread");
+            return "ChatApi.nextMessage() was aborted because it was called from the primary thread";
+        }
         nextMessageActive = true;
         String lastMessage = "";
         lastMessageHashMap.put(player.getUniqueId(), null);
         if (lastMessage(player) != null) lastMessage = lastMessage(player);
-        player.sendMessage("Waiting for next Message...");
+        sendMessage(player, "Waiting for next Message...");
         long start = System.currentTimeMillis();
         while (lastMessage(player) == null || lastMessage(player).equals(lastMessage)) {
             long loop = System.currentTimeMillis();
-
             if (loop / 1000 - start / 1000 == 60)
                 return null; //Break after 60 seconds
-
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-
-
         }
         nextMessageActive = false;
         return lastMessage(player);
     }
+
+    public void sendMessage(Player p, String message){
+        p.sendMessage(prefix + message);
+    }
+
+    public void sendMessage(UUID id, String message){
+        Player p = Bukkit.getPlayer(id);
+        if (p != null) sendMessage(p, message);
+    }
+
+    public void BroadcastMessage(String message){
+        for(Player p : Bukkit.getOnlinePlayers()){
+            sendMessage(p, message);
+        }
+    }
+
+    public String playerName(Player p){
+        return playerColor + p.getName();
+    }
+
+    public String playerName(UUID id){
+        Player p = Bukkit.getPlayer(id);
+        if (p != null) return playerName(p);
+        return "";
+    }
+
 
 
 }

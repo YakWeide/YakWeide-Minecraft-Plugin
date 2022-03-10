@@ -2,29 +2,30 @@ package de.YakWeide;
 
 import de.YakWeide.RockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
+import java.util.Objects;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
   public static Plugin plugin;
-  public static String prefix = ChatColor.GOLD + " ";
+  private ChatApi chatApi;
 
   @Override
   public void onEnable() {
     plugin = this;
     getServer().getPluginManager().registerEvents(new Events(), this);
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
-    this.getCommand("rps").setExecutor(new RpsMain());
+    chatApi = ChatApi.getInstance();
+    Objects.requireNonNull(this.getCommand("rps")).setExecutor(new RpsMain());
+
+    chatApi.BroadcastMessage("Plugin started");
   }
 
   @Override
@@ -37,7 +38,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
     if (label.equalsIgnoreCase("hello")) {
       if (sender instanceof Player) {
         Player player = (Player) sender;
-        player.sendMessage("Hello world!");
+        chatApi.sendMessage(player, "Hello world!");
         return true;
       }
     }
@@ -45,22 +46,18 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
       if( sender instanceof Player) {
         Player player = (Player) sender;
         Location location = player.getLocation();
-        for(int i = 0; i< Bukkit.getOnlinePlayers().size(); i++){
-          ArrayList<Player> list = new ArrayList(Bukkit.getOnlinePlayers());
-          Player p = (Player) list.get(i);
-          p.sendMessage( player.getName() + "s " +"Koordinaten sind: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
-        }
+        chatApi.BroadcastMessage(ChatApi.getInstance().playerName(player) + "s " + ChatApi.prefixColor + "Koordinaten sind: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
       }
     }else if(label.equalsIgnoreCase("lastMessage")){
 
       if(sender instanceof Player) {
         Player player = (Player) sender;
-        String lastMessage = "";
+        String lastMessage;
         if(ChatApi.getInstance().lastMessage(player) == null){
-          player.sendMessage("You havent sent a Message yet");
+          chatApi.sendMessage(player, ChatApi.badColor + "You haven't sent a Message yet");
         }else {
           lastMessage = ChatApi.getInstance().lastMessage(player);
-          player.sendMessage("Your Last Message was: " + lastMessage);
+          chatApi.sendMessage(player, "Your Last Message was: " + lastMessage);
         }
       }
 
