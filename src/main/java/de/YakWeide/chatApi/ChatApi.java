@@ -47,9 +47,9 @@ public class ChatApi implements Listener {
         String Message = PlainTextComponentSerializer.plainText().serialize(event.message());
         lastMessageHashMap.put(p.getUniqueId(), Message);
         if (nextMessageActive) {
-            sendPlayerMessage(p, Message);
             event.setCancelled(true);
         }
+        sendPlayerMessage(p, Message);
     }
 
 
