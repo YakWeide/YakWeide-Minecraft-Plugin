@@ -47,7 +47,7 @@ public class ChatApi implements Listener {
         String Message = PlainTextComponentSerializer.plainText().serialize(event.message());
         lastMessageHashMap.put(p.getUniqueId(), Message);
         if (nextMessageActive) {
-            p.sendMessage(Message);
+            sendPlayerMessage(p, Message);
             event.setCancelled(true);
         }
     }
@@ -81,6 +81,10 @@ public class ChatApi implements Listener {
 
     public void sendMessage(Player p, String message){
         p.sendMessage(prefix + message);
+    }
+
+    public void sendPlayerMessage(Player p, String message){
+        p.sendMessage(prefixColor + "[" + ChatColor.GOLD + p.getName() + prefixColor + "] " + message);
     }
 
     public void sendMessage(UUID id, String message){
