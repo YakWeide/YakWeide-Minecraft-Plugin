@@ -49,7 +49,7 @@ public class ChatApi implements Listener {
         if (nextMessageActive) {
             event.setCancelled(true);
         }
-        event.message(PlainTextComponentSerializer.plainText().deserialize(playerChatMessage(p, Message)));
+        BroadcastMessage(playerChatMessage(p, Message));
     }
 
 
