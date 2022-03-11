@@ -49,7 +49,7 @@ public class ChatApi implements Listener {
         if (nextMessageActive) {
             event.setCancelled(true);
         }
-        sendPlayerMessage(p, Message);
+        event.message(PlainTextComponentSerializer.plainText().deserialize(playerChatMessage(p, Message)));
     }
 
 
@@ -83,8 +83,8 @@ public class ChatApi implements Listener {
         p.sendMessage(prefix + message);
     }
 
-    public void sendPlayerMessage(Player p, String message){
-        p.sendMessage(prefixColor + "[" + ChatColor.GOLD + p.getName() + prefixColor + "] " + message);
+    public String playerChatMessage(Player p, String message){
+        return prefixColor + "[" + ChatColor.GOLD + p.getName() + prefixColor + "] " + message;
     }
 
     public void sendMessage(UUID id, String message){
