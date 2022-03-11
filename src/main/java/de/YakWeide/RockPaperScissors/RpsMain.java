@@ -35,11 +35,6 @@ public class RpsMain implements CommandExecutor {
                     }
                 };
                 thread.start();
-                try {
-                    thread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }else{
                 ArrayList<Player> playerList = new ArrayList<>(Bukkit.getOnlinePlayers());
                 for(int i = 0; i < Bukkit.getOnlinePlayers().size(); i++){
@@ -57,11 +52,6 @@ public class RpsMain implements CommandExecutor {
                             }
                         };
                         thread.start();
-                        try {
-                            thread.join();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                         return false;
                     }
                 }
