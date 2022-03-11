@@ -61,9 +61,9 @@ public class RpsGame {
     }
     // returns the hand of the opponent to the human
     private void returnEnemyHand(RpsPlayer p1, RpsPlayer p2){
-        chatApi.sendMessage(p1.getId(), chatApi.playerName(p2.getId()) + ChatApi.prefixColor + "takes: " + p2.getHand());
+        chatApi.sendMessage(p1.getId(), chatApi.playerName(p2.getId()) + ChatApi.prefixColor + " takes: " + p2.getHand());
         if(p2 instanceof RpsHuman){
-            chatApi.sendMessage(p2.getId(), chatApi.playerName(p2.getId()) + ChatApi.prefixColor + "takes: " + p2.getHand());
+            chatApi.sendMessage(p2.getId(), chatApi.playerName(p2.getId()) + ChatApi.prefixColor + " takes: " + p2.getHand());
         }
     }
 }

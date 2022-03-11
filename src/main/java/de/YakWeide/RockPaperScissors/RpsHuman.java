@@ -44,7 +44,7 @@ public class RpsHuman extends RpsPlayer {
     //challenge another player to rps, true if accepted, false if declined
     public boolean challenge(RpsPlayer p2){
         chatApi.sendMessage(p2.getId(), chatApi.playerName(this.getId()) + ChatApi.prefixColor + " challenges you to a game of Rock, Paper, Scissors (" + ChatApi.goodColor + "y/" + ChatApi.badColor + "n)");
-        chatApi.sendMessage(p2.getId(), "Waiting for " + chatApi.playerName(p2.getId()) + "s " + ChatApi.prefixColor + "answer!");
+        chatApi.sendMessage(this.getId(), "Waiting for " + chatApi.playerName(p2.getId()) + "s " + ChatApi.prefixColor + "answer!");
         String input;
         ChatApi chatApi = ChatApi.getInstance();
         input = chatApi.nextMessage(Bukkit.getPlayer(p2.getId()));
