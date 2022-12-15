@@ -9,3 +9,5 @@ website: Yakweide.de
 commands:
   Coords:
   rps:
+  accept:
+  decline:
