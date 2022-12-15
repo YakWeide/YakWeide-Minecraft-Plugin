@@ -4,19 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>YakWeide-Minecraft-Plugin</groupId>
-    <artifactId>YakWeide-Minecraft-Plugin</artifactId>
+    <groupId>Yakweide-Minecraft-Plugin</groupId>
+    <artifactId>Yakweide-Minecraft-Plugin</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>YakWeide Minecraft Plugin</name>
+    <name>Yakweide Minecraft Plugin</name>
 
-    <description>minecraft plugin</description>
+    <description>Yakweide-Minecraft-Plugin</description>
     <properties>
-        <java.version>19</java.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <url>YakWeide.de</url>
 
     <build>
         <plugins>
@@ -56,8 +55,8 @@
 
     <repositories>
         <repository>
-            <id>papermc-repo</id>
-            <url>https://papermc.io/repo/repository/maven-public/</url>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -67,9 +66,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>1.19.3-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.19.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

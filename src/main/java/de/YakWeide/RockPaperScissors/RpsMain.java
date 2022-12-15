@@ -7,13 +7,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 public class RpsMain implements CommandExecutor {
 
     private final ChatApi chatApi = ChatApi.getInstance();
 
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // options for rps command: /rps computer, /rps player name, if computer: starts a rps game against computer, if {player name} ask challenged player if they want to play if yes: start game against them
         if(label.equalsIgnoreCase("rps")){
             RpsGame game = new RpsGame();

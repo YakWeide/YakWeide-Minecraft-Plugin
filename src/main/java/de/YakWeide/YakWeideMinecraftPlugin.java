@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
@@ -34,7 +33,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
   }
 
 
-  public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, String label, String[] args) {
+  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
     if (label.equalsIgnoreCase("hello")) {
       if (sender instanceof Player) {
         Player player = (Player) sender;

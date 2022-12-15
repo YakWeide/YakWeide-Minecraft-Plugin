@@ -1,14 +1,15 @@
 package de.YakWeide.chatApi;
 
-import io.papermc.paper.event.player.AsyncChatEvent;
 import java.util.HashMap;
 import java.util.UUID;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatApi implements Listener {
 
@@ -41,15 +42,17 @@ public class ChatApi implements Listener {
     }
 
     //Chat Event to log the player messages
-    @EventHandler
-    public void onPlayerChat(AsyncChatEvent event) {
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player p = event.getPlayer();
-        String Message = PlainTextComponentSerializer.plainText().serialize(event.message());
+
+        String Message = event.getMessage();
+
         lastMessageHashMap.put(p.getUniqueId(), Message);
         if (nextMessageActive) {
             event.setCancelled(true);
+            p.sendMessage(playerChatMessage(p, Message));
         }
-        BroadcastMessage(playerChatMessage(p, Message));
     }
 
 
