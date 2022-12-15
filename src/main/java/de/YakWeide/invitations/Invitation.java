@@ -25,6 +25,10 @@ public class Invitation {
         return invitee;
     }
 
+    public boolean containsInvitee(Player p) {
+        return getInvitee() == p;
+    }
+
     public void setInvitee(Player invitee) {
         this.invitee = invitee;
     }
@@ -36,8 +40,6 @@ public class Invitation {
     public void setInvitation(InvitationType invitation) {
         this.invitation = invitation;
     }
-
-
 
 
 }
