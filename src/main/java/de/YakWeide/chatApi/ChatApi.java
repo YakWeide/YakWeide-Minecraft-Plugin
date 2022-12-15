@@ -20,7 +20,7 @@ public class ChatApi implements Listener {
     private static final String prefix = prefixColor + "[" + ChatColor.GOLD + "YakWeide" + prefixColor + "] ";
     public static final ChatColor goodColor = ChatColor.GREEN;
     public static final ChatColor badColor = ChatColor.RED;
-    private static final ChatColor playerColor = ChatColor.GOLD;
+    public static final ChatColor playerColor = ChatColor.GOLD;
 
     public static ChatApi getInstance() {
         if (chatApi_instance == null)
@@ -54,7 +54,6 @@ public class ChatApi implements Listener {
             p.sendMessage(playerChatMessage(p, Message));
         }
     }
-
 
     //Returns the next message of the given player, returns null after 60 seconds without a message
     public String nextMessage(Player player) {
@@ -103,6 +102,10 @@ public class ChatApi implements Listener {
 
     public String playerName(Player p){
         return playerColor + p.getName() + prefixColor;
+    }
+
+    public String playerName(String playerString){
+        return playerColor + playerString;
     }
 
     public String playerName(UUID id){
