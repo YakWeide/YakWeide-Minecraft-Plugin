@@ -21,7 +21,7 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
         Player p = event.getPlayer();
-        if(p.getName().equalsIgnoreCase("AquaDrache")){
+        if(p.getName().equalsIgnoreCase("AquaDrachit")){
             event.setQuitMessage("ciaooooooooo");
         }
     }
