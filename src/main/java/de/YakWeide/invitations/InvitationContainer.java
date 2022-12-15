@@ -3,14 +3,14 @@ package de.YakWeide.invitations;
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+//Todo: Mach die kagge englisch
 //Verwalterklasse für alle Invitations
 //Singleton Pattern
 public class InvitationContainer {
 
-    private ArrayList<Invitation> invitations;
+    private final ArrayList<Invitation> invitations = new ArrayList<>();
     private static InvitationContainer instance;
 
     private InvitationContainer() {
@@ -61,22 +61,20 @@ public class InvitationContainer {
     }
 
     public static Invitation findLatestReceivedInvitationOf(Player player) {
-        Invitation invitation = getInstance()._findLatestReceivedInvitationOf(player);
-        return invitation;
+        return getInstance()._findLatestReceivedInvitationOf(player);
     }
 
     public Invitation _findLatestReceivedInvitationOf(Player player) {
-        for (int i = 0; i < invitations.size(); i++) {
-            if (this.invitations.get(i).containsInvitee(player)) {
-                return invitations.get(i);
+        for (Invitation invitation : invitations) {
+            if (invitation.containsInvitee(player)) {
+                return invitation;
             }
         }
         return null;
     }
 
     public static Invitation findLatestSentInvitationOf(Player player) {
-        Invitation invitation = getInstance()._findLatestSentInvitationOf(player);
-        return invitation;
+        return getInstance()._findLatestSentInvitationOf(player);
     }
 
     public Invitation _findLatestSentInvitationOf(Player player) {
@@ -89,18 +87,17 @@ public class InvitationContainer {
     }
 
     public static ArrayList<Invitation> findAllOpenInvitationsOf(Player player) {
-        ArrayList<Invitation> list = getInstance()._findAllOpenInvitationsOf(player);
-        return list;
+        return getInstance()._findAllOpenInvitationsOf(player);
     }
 
     public ArrayList<Invitation> _findAllOpenInvitationsOf(Player player) {
         ArrayList<Invitation> list = new ArrayList<>();
-        for (int i = 0; i < invitations.size(); i++) {
-            if (this.invitations.get(i).containsInviter(player)) {
-                list.add(invitations.get(i));
+        for (Invitation invitation : invitations) {
+            if (invitation.containsInviter(player)) {
+                list.add(invitation);
             }
-            if (this.invitations.get(i).containsInvitee(player)) {
-                list.add(invitations.get(i));
+            if (invitation.containsInvitee(player)) {
+                list.add(invitation);
             }
         }
         return list;

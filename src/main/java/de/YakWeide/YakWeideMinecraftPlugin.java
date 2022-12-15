@@ -10,18 +10,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
   public static Plugin plugin;
-  private ChatApi chatApi;
 
   @Override
   public void onEnable() {
     plugin = this;
     getServer().getPluginManager().registerEvents(new Events(), this);
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
-    chatApi = ChatApi.getInstance();
+    ChatApi chatApi = ChatApi.getInstance();
     Objects.requireNonNull(this.getCommand("rps")).setExecutor(new RpsMain());
 
     chatApi.BroadcastMessage("Plugin started");
@@ -33,7 +33,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
   }
 
 
-  public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+  public boolean onCommand(@NonNull CommandSender sender,@NonNull  Command cmd,@NonNull  String label, String[] args) {
     return false;
   }
 
