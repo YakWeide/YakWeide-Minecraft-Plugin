@@ -101,7 +101,7 @@ public class ChatApi implements Listener {
     }
 
     public String playerName(Player p){
-        return playerColor + p.getName();
+        return playerColor + p.getName() + prefixColor;
     }
 
     public String playerName(String playerString){

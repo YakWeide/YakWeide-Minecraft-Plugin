@@ -7,7 +7,5 @@ description: minecraft plugin
 website: Yakweide.de
 
 commands:
-  Hello:
   Coords:
-  lastMessage:
   rps:
