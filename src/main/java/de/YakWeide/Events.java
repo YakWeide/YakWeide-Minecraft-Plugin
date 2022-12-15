@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class Events implements Listener {
@@ -21,12 +22,35 @@ public class Events implements Listener {
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event){
-        Player p = event.getPlayer();
-        if(p.getName().equalsIgnoreCase("AquaDrachit")){
+        Player player = event.getPlayer();
+        YakPlayer yakPlayer = YakPlayer.getYakPlayer(player);
+        assert yakPlayer != null;
+        if(yakPlayer.getCustomQuitMessage() != null && !yakPlayer.getCustomQuitMessage().isEmpty()){
+            event.setQuitMessage(yakPlayer.getCustomQuitMessage());
+        }
+
+
+        if(player.getName().equalsIgnoreCase("AquaDrachit")){
             event.setQuitMessage("ciaooooooooo");
         }
-        if(p.getName().equalsIgnoreCase("TonkHD")){
+        if(player.getName().equalsIgnoreCase("TonkHD")){
             event.setQuitMessage(ChatColor.AQUA + "WIEDERSCHAUN UND REINGEHAUN!");
+        }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event){
+        Player player = event.getPlayer();
+        YakPlayer yakPlayer;
+        if(!YakPlayer.isInYakPlayerList(player)) {
+            yakPlayer = new YakPlayer(player);
+            YakWeideMinecraftPlugin.yakPlayerList.add(yakPlayer);
+        }else{
+            yakPlayer = YakPlayer.getYakPlayer(player);
+            assert yakPlayer != null;
+        }
+        if(yakPlayer.getCustomJoinMessage() != null && !yakPlayer.getCustomJoinMessage().isEmpty()){
+            event.setJoinMessage(yakPlayer.getCustomJoinMessage());
         }
     }
 
