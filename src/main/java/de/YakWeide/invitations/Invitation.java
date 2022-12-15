@@ -5,12 +5,12 @@ import org.bukkit.entity.Player;
 public class Invitation {
     private Player inviter;
     private Player invitee;
-    private InvitationType invitation;
+    private InvitationApiUser type;
 
-    public Invitation(Player inviter, Player invitee, InvitationType invitation) {
+    public Invitation(Player inviter, Player invitee, InvitationApiUser type) {
         this.inviter = inviter;
         this.invitee = invitee;
-        this.invitation = invitation;
+        this.type = type;
     }
 
     public Player getInviter() {
@@ -29,16 +29,18 @@ public class Invitation {
         return getInvitee() == p;
     }
 
+    public boolean containsInviter(Player p){return getInviter() == p;}
+
     public void setInvitee(Player invitee) {
         this.invitee = invitee;
     }
 
-    public InvitationType getInvitation() {
-        return invitation;
+    public InvitationApiUser getType() {
+        return type;
     }
 
-    public void setInvitation(InvitationType invitation) {
-        this.invitation = invitation;
+    public void setType(InvitationApiUser type) {
+        this.type = type;
     }
 
 
