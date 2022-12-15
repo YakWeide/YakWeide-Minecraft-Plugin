@@ -1,7 +1,9 @@
 package de.YakWeide.invitations;
 
+import java.util.ArrayList;
+
 public class InvitationContainer {
-    private
+    private static ArrayList<Invitation> invitations;
     private static InvitationContainer instance;
     private InvitationContainer(){};
 
@@ -12,6 +14,6 @@ public class InvitationContainer {
         return instance;
     }
 
-    public static void addEvent
+    public static void addInvitation()
 
 }
