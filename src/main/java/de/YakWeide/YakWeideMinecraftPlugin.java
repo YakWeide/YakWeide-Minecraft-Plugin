@@ -34,34 +34,6 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-    if (label.equalsIgnoreCase("hello")) {
-      if (sender instanceof Player) {
-        Player player = (Player) sender;
-        chatApi.sendMessage(player, "Hello world!");
-        return true;
-      }
-    }
-    else if(label.equalsIgnoreCase("coords")){
-      if( sender instanceof Player) {
-        Player player = (Player) sender;
-        Location location = player.getLocation();
-        chatApi.BroadcastMessage(ChatApi.getInstance().playerName(player) + "s " + ChatApi.prefixColor + "Koordinaten sind: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
-      }
-    }else if(label.equalsIgnoreCase("lastMessage")){
-
-      if(sender instanceof Player) {
-        Player player = (Player) sender;
-        String lastMessage;
-        if(ChatApi.getInstance().lastMessage(player) == null){
-          chatApi.sendMessage(player, ChatApi.badColor + "You haven't sent a Message yet");
-        }else {
-          lastMessage = ChatApi.getInstance().lastMessage(player);
-          chatApi.sendMessage(player, "Your Last Message was: " + lastMessage);
-        }
-      }
-
-    }
-
     return false;
   }
 
