@@ -9,7 +9,7 @@ public class OneVersusOneGames {
     private Player challenger;      //challenger
     private Player challenged;      //challenged
 
-    private static ArrayList<Player> activeFighters = new ArrayList<>();
+    private static final ArrayList<Player> activeFighters = new ArrayList<>();
     private final ChatApi chatApi = ChatApi.getInstance();
 
 
@@ -20,7 +20,7 @@ public class OneVersusOneGames {
 
     public boolean begin(){
 
-
+        return false;
     }
 
 
