@@ -4,9 +4,9 @@ import java.util.UUID;
 
 public abstract class RpsPlayer {
     // id of minecraft player, null if RpsPlayer is computer
-    UUID id;
+    public UUID id;
     //name of minecraft player, "computer" if RpsPlayer is computer
-    String name;
+    public String name;
 
     public String getName() {
         return name;
