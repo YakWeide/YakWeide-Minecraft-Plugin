@@ -1,6 +1,7 @@
 package de.YakWeide;
 
 import de.YakWeide.chatApi.ChatApi;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,6 +24,9 @@ public class Events implements Listener {
         Player p = event.getPlayer();
         if(p.getName().equalsIgnoreCase("AquaDrachit")){
             event.setQuitMessage("ciaooooooooo");
+        }
+        if(p.getName().equalsIgnoreCase("TonkHD")){
+            event.setQuitMessage(ChatColor.AQUA + "WIEDERSCHAUN UND REINGEHAUN!");
         }
     }
 
