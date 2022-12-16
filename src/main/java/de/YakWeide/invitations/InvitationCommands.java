@@ -28,6 +28,7 @@ public class InvitationCommands implements CommandExecutor {
             //Check if player has an open Invitation
             if(invitation == null || invitation.getInviter() == player){
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
+                return true;
             }
 
             //Invitation was accepted, notify inviter and invitee
@@ -50,6 +51,7 @@ public class InvitationCommands implements CommandExecutor {
             //Check if player has an open Invitation
             if(invitation == null || invitation.getInviter() == player){
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
+                return true;
             }
 
             //Invitation was declined, notify inviter and invitee
