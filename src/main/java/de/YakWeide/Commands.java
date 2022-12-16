@@ -22,7 +22,7 @@ public class Commands implements CommandExecutor {
         //Broadcast own coordinates to all other Players
         if (label.equalsIgnoreCase("coords")) {
             Location location = player.getLocation();
-            chatApi.BroadcastMessage(ChatApi.getInstance().playerName(player) + "s " + ChatApi.prefixColor + "Koordinaten sind: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
+            chatApi.BroadcastMessage(ChatApi.getInstance().playerName(player) + ChatApi.playerColor + "s " + ChatApi.prefixColor + "Koordinaten sind: " + (int) location.getX() + " " + (int) location.getY() + " " + (int) location.getZ());
         }
 
         //
