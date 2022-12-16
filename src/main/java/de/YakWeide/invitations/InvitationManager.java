@@ -1,5 +1,6 @@
 package de.YakWeide.invitations;
 
+import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -30,6 +31,10 @@ public class InvitationManager {
 
 
     public void _invite(Player inviter, Player invitee, InvitationApiUser obj){
+        if(invitee == null){
+            ChatApi chatApi = ChatApi.getInstance();
+            chatApi.sendMessage(inviter, ChatApi.badColor + "There is no such Player online!");
+        }
         Invitation invitation = new Invitation(inviter, invitee, obj);
         InvitationPlayer inviterWrapper = this._getInvitationPlayer(inviter);
         InvitationPlayer inviteeWrapper = this._getInvitationPlayer(invitee);

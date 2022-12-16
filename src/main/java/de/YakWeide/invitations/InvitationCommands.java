@@ -1,6 +1,7 @@
 package de.YakWeide.invitations;
 
 import de.YakWeide.chatApi.ChatApi;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -55,6 +56,20 @@ public class InvitationCommands implements CommandExecutor {
             InvitationPlayer invitee = InvitationManager.getInvitationPlayer(invitation.getInvitee());
             inviter.notifyPlayerAboutDeclinedInvitation(invitation);
             invitee.notifyPlayerAboutDeclinedInvitation(invitation);
+            return true;
+        }
+
+
+        else if(label.equalsIgnoreCase("invitationtest")) {
+            Player invitedPlayer = null;
+            for(Player p : Bukkit.getOnlinePlayers()){
+                if(p.getName().equals(args[0])){
+                    invitedPlayer = p;
+                    break;
+                }
+            }
+            InvitationTest test= new InvitationTest(player, invitedPlayer);
+            InvitationManager.invite(player, invitedPlayer, test);
             return true;
         }
         return false;
