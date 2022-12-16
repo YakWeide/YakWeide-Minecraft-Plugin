@@ -19,14 +19,16 @@ public class InvitationCommands implements CommandExecutor {
         Player player = (Player) sender;
 
         if (label.equalsIgnoreCase("accept")) {
-            Invitation invitation = InvitationContainer.findLatestReceivedInvitationOf(player);
+
+            InvitationPlayer invitationPlayer = InvitationManager.getInvitationPlayer(player);
+            Invitation invitation = invitationPlayer.getMostRecentInvitation();
             if(invitation == null){
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
-                return false;
             }
-            InvitationApiUser type = invitation.getType();
+
             Player inviter = invitation.getInviter();
             Player invitee = invitation.getInvitee();
+
             chatApi.sendMessage(inviter, chatApi.playerName(invitee) + "hat deine Einladung angenommen, " + ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " beginnt JETZT!");
             chatApi.sendMessage(invitee, ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " gegen " + chatApi.playerName(inviter) + "beginnt JETZT!");
             //TODO: Play Sound
@@ -35,14 +37,15 @@ public class InvitationCommands implements CommandExecutor {
 
 
         else if(label.equalsIgnoreCase("decline")){
-            Invitation invitation = InvitationContainer.findLatestReceivedInvitationOf(player);
+            InvitationPlayer invitationPlayer = InvitationManager.getInvitationPlayer(player);
+            Invitation invitation = invitationPlayer.getMostRecentInvitation();
             if(invitation == null){
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
-                return false;
             }
-            InvitationApiUser type = invitation.getType();
+
             Player inviter = invitation.getInviter();
             Player invitee = invitation.getInvitee();
+
             chatApi.sendMessage(inviter, chatApi.playerName(invitee) + ChatApi.badColor + "hat deine Einladung abgelehnt!");
             chatApi.sendMessage(invitee, ChatApi.badColor + "Du hast die Einladung gegen " + chatApi.playerName(inviter) + ChatApi.badColor + "abgelehnt!");
         }
