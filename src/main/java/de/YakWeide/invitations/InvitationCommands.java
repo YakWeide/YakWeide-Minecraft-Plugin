@@ -66,12 +66,16 @@ public class InvitationCommands implements CommandExecutor {
 
 
         else if(label.equalsIgnoreCase("invitationtest")) {
+            if(args.length != 1){
+                return false;
+            }
             Player invitedPlayer = null;
             for(Player p : Bukkit.getOnlinePlayers()){
                 if(p.getName().equals(args[0])){
                     invitedPlayer = p;
                     break;
                 }
+
             }
             InvitationTest test= new InvitationTest(player, invitedPlayer);
             InvitationManager.invite(player, invitedPlayer, test);

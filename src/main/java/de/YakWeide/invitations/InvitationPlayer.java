@@ -28,7 +28,7 @@ public class InvitationPlayer {
         Player invitee = invitation.getInvitee();
         ChatApi chatApi = ChatApi.getInstance();
         if(this.player == inviter){
-            chatApi.sendMessage(inviter,  ChatApi.prefixColor + " Du hast " + chatApi.playerName(invitee) + " zu " + invitation.getType().toString() + " herausgefordert.");
+            chatApi.sendMessage(inviter,  ChatApi.prefixColor + "Du hast " + chatApi.playerName(invitee) + " zu " + invitation.getType().toString() + " herausgefordert.");
         }
         if(this.player == invitee){
             chatApi.sendMessage(invitee, chatApi.playerName(inviter) + ChatApi.prefixColor + " möchte dich zu " + invitation.getType().toString() + " herausfordern.");
@@ -41,10 +41,10 @@ public class InvitationPlayer {
         Player inviter = invitation.getInviter();
         Player invitee = invitation.getInvitee();
         if(this.player == inviter){
-            chatApi.sendMessage(inviter, chatApi.playerName(invitee) + "hat deine Einladung angenommen, " + ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " beginnt JETZT!");
+            chatApi.sendMessage(inviter, chatApi.playerName(invitee) + " hat deine Einladung angenommen, " + ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " beginnt JETZT!");
         }
         if(this.player == invitee){
-            chatApi.sendMessage(invitee, ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " gegen " + chatApi.playerName(inviter) + "beginnt JETZT!");
+            chatApi.sendMessage(invitee, ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " gegen " + chatApi.playerName(inviter) + " beginnt JETZT!");
         }
     }
 
@@ -53,10 +53,10 @@ public class InvitationPlayer {
         Player inviter = invitation.getInviter();
         Player invitee = invitation.getInvitee();
         if(this.player == inviter){
-            chatApi.sendMessage(inviter, chatApi.playerName(invitee) + ChatApi.badColor + "hat deine Einladung abgelehnt!");
+            chatApi.sendMessage(inviter, chatApi.playerName(invitee) + ChatApi.badColor + " hat deine Einladung abgelehnt!");
         }
         if(this.player == invitee){
-            chatApi.sendMessage(invitee, ChatApi.badColor + "Du hast die Einladung gegen " + chatApi.playerName(inviter) + ChatApi.badColor + "abgelehnt!");
+            chatApi.sendMessage(invitee, ChatApi.badColor + "Du hast die Einladung gegen " + chatApi.playerName(inviter) + ChatApi.badColor + " abgelehnt!");
         }
     }
 }
