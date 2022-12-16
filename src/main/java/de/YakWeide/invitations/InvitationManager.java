@@ -34,9 +34,11 @@ public class InvitationManager {
         ChatApi chatApi = ChatApi.getInstance();
         if(invitee == null){
             chatApi.sendMessage(inviter, ChatApi.badColor + "There is no such Player online!");
+            return;
         }
         if(inviter == invitee){
             chatApi.sendMessage(inviter, ChatApi.badColor + "You can't invite yourself!");
+            return;
         }
         Invitation invitation = new Invitation(inviter, invitee, obj);
         InvitationPlayer inviterWrapper = this._getInvitationPlayer(inviter);
