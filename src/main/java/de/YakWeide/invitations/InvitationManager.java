@@ -18,6 +18,7 @@ public class InvitationManager {
         return instance;
     }
 
+
     //Call this method when you want to send an invite.
     //The invitee will be notified and can accept/decline the invite
     //The inviter will be nofied if the invitee accepted/declined
@@ -26,6 +27,7 @@ public class InvitationManager {
         getInstance()._invite(inviter, invitee, obj);
 
     }
+
 
     public void _invite(Player inviter, Player invitee, InvitationApiUser obj){
         Invitation invitation = new Invitation(inviter, invitee, obj);
@@ -38,10 +40,13 @@ public class InvitationManager {
 
     }
 
+
     //Returns the InvitationPlayer for a Player: Searches if there already is an invitationPlayer to player, if not creates one.
     public static InvitationPlayer getInvitationPlayer(Player player){
         return getInstance()._getInvitationPlayer(player);
     }
+
+
     public InvitationPlayer _getInvitationPlayer(Player player){
         InvitationPlayer invitationPlayer = playerMap.get(player);
         if(invitationPlayer == null){
@@ -51,9 +56,11 @@ public class InvitationManager {
         return invitationPlayer;
     }
 
+
     public static void remove(Player player){
         getInstance()._remove(player);
     }
+
 
     public void _remove(Player player){
         playerMap.remove(player);
