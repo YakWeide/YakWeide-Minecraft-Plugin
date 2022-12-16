@@ -21,6 +21,9 @@ public class InvitationPlayer {
     }
 
     public void notifyPlayerAboutNewInvitation(Invitation invitation){
+        if(invitation == null){
+            return;
+        }
         Player inviter = invitation.getInviter();
         Player invitee = invitation.getInvitee();
         ChatApi chatApi = ChatApi.getInstance();
