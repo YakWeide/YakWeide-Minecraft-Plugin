@@ -56,6 +56,7 @@ public class InvitationCommands implements CommandExecutor {
             InvitationPlayer invitee = InvitationManager.getInvitationPlayer(invitation.getInvitee());
             inviter.notifyPlayerAboutDeclinedInvitation(invitation);
             invitee.notifyPlayerAboutDeclinedInvitation(invitation);
+
             return true;
         }
 

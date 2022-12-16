@@ -39,6 +39,7 @@ public class InvitationManager {
         InvitationPlayer inviterWrapper = this._getInvitationPlayer(inviter);
         InvitationPlayer inviteeWrapper = this._getInvitationPlayer(invitee);
 
+
         //inviter and invitee will be informed that the new invitation was created and waits to be accepted/ declined
         inviterWrapper.setMostRecentInvitation(invitation);
         inviteeWrapper.setMostRecentInvitation(invitation);
@@ -59,6 +60,19 @@ public class InvitationManager {
             playerMap.put(player, invitationPlayer);
         }
         return invitationPlayer;
+    }
+
+    public static void removeInvitation(Invitation invitation){
+        getInstance()._removeInvitation(invitation);
+    }
+
+    public void _removeInvitation(Invitation invitation){
+        Player inviter = invitation.getInviter();
+        Player invitee = invitation.getInvitee();
+        InvitationPlayer inviterWrapper = this._getInvitationPlayer(inviter);
+        InvitationPlayer inviteeWrapper = this._getInvitationPlayer(invitee);
+        inviterWrapper.setMostRecentInvitation(null);
+        inviteeWrapper.setMostRecentInvitation(null);
     }
 
 
