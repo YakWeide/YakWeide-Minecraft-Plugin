@@ -2,6 +2,7 @@ package de.YakWeide;
 
 import de.YakWeide.RockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
+import de.YakWeide.invitations.InvitationCommands;
 import de.YakWeide.invitations.InvitationEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -26,6 +27,10 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
     ChatApi chatApi = ChatApi.getInstance();
     Objects.requireNonNull(this.getCommand("rps")).setExecutor(new RpsMain());
+    Objects.requireNonNull(this.getCommand("coords")).setExecutor(new Commands());
+    Objects.requireNonNull(this.getCommand("accept")).setExecutor(new InvitationCommands());
+    Objects.requireNonNull(this.getCommand("decline")).setExecutor(new InvitationCommands());
+    Objects.requireNonNull(this.getCommand("invitationtest")).setExecutor(new InvitationCommands());
 
     chatApi.BroadcastMessage("Plugin started");
   }
