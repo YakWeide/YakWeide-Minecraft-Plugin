@@ -38,6 +38,7 @@ public class InvitationCommands implements CommandExecutor {
 
             //TODO: Play Sound
             invitation.getType().onAcceptedInvitation();
+            InvitationManager.removeInvitation(invitation);
             return true;
         }
 
@@ -56,6 +57,7 @@ public class InvitationCommands implements CommandExecutor {
             InvitationPlayer invitee = InvitationManager.getInvitationPlayer(invitation.getInvitee());
             inviter.notifyPlayerAboutDeclinedInvitation(invitation);
             invitee.notifyPlayerAboutDeclinedInvitation(invitation);
+            InvitationManager.removeInvitation(invitation);
 
             return true;
         }
