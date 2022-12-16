@@ -40,15 +40,23 @@ public class InvitationPlayer {
         ChatApi chatApi = ChatApi.getInstance();
         Player inviter = invitation.getInviter();
         Player invitee = invitation.getInvitee();
-        chatApi.sendMessage(inviter, chatApi.playerName(invitee) + "hat deine Einladung angenommen, " + ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " beginnt JETZT!");
-        chatApi.sendMessage(invitee, ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " gegen " + chatApi.playerName(inviter) + "beginnt JETZT!");
+        if(this.player == inviter){
+            chatApi.sendMessage(inviter, chatApi.playerName(invitee) + "hat deine Einladung angenommen, " + ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " beginnt JETZT!");
+        }
+        if(this.player == invitee){
+            chatApi.sendMessage(invitee, ChatApi.goodColor + invitation.getType().toString() + ChatApi.prefixColor + " gegen " + chatApi.playerName(inviter) + "beginnt JETZT!");
+        }
     }
 
     public void notifyPlayerAboutDeclinedInvitation(Invitation invitation){
         ChatApi chatApi = ChatApi.getInstance();
         Player inviter = invitation.getInviter();
         Player invitee = invitation.getInvitee();
-        chatApi.sendMessage(inviter, chatApi.playerName(invitee) + ChatApi.badColor + "hat deine Einladung abgelehnt!");
-        chatApi.sendMessage(invitee, ChatApi.badColor + "Du hast die Einladung gegen " + chatApi.playerName(inviter) + ChatApi.badColor + "abgelehnt!");
+        if(this.player == inviter){
+            chatApi.sendMessage(inviter, chatApi.playerName(invitee) + ChatApi.badColor + "hat deine Einladung abgelehnt!");
+        }
+        if(this.player == invitee){
+            chatApi.sendMessage(invitee, ChatApi.badColor + "Du hast die Einladung gegen " + chatApi.playerName(inviter) + ChatApi.badColor + "abgelehnt!");
+        }
     }
 }
