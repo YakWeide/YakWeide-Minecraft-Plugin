@@ -6,22 +6,23 @@ import java.util.Optional;
 
 public class MGPlayer {
     private final Player root;
-    private MiniGame game;
+    private MiniGame currentGame;
 
-    public MGPlayer(Player root) {
+    public MGPlayer(Player root, MiniGame game) {
         this.root = root;
+        currentGame = game;
     }
 
     public Player getRoot() {
         return root;
     }
 
-    public Optional<MiniGame> getGame() {
-        return Optional.ofNullable(game);
+    public Optional<MiniGame> getCurrentGame() {
+        return Optional.ofNullable(currentGame);
     }
 
-    public void setGame(MiniGame game) {
-        this.game = game;
+    public void setCurrentGame(MiniGame currentGame) {
+        this.currentGame = currentGame;
     }
 
 

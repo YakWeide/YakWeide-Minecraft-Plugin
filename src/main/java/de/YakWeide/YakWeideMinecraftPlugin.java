@@ -4,6 +4,7 @@ import de.YakWeide.RockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationCommands;
 import de.YakWeide.invitations.InvitationEvents;
+import de.YakWeide.miniGameApi.MiniGameApiCommands;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -31,6 +32,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
     Objects.requireNonNull(this.getCommand("accept")).setExecutor(new InvitationCommands());
     Objects.requireNonNull(this.getCommand("decline")).setExecutor(new InvitationCommands());
     Objects.requireNonNull(this.getCommand("invitationtest")).setExecutor(new InvitationCommands());
+    Objects.requireNonNull(this.getCommand("cancelGame")).setExecutor(new MiniGameApiCommands());
 
     chatApi.BroadcastMessage("Plugin started");
   }

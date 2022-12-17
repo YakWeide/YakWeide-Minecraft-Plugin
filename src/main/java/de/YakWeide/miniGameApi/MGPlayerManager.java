@@ -14,8 +14,8 @@ import java.util.Optional;
  * @author Jan Reitz
  */
 public class MGPlayerManager {
-    private final HashMap<Player, MGPlayer> playerMap = new HashMap<Player, MGPlayer>();
     private static MGPlayerManager instance;
+    private final HashMap<Player, MGPlayer> playerMap = new HashMap<>();
 
     private MGPlayerManager() {
 
@@ -38,24 +38,13 @@ public class MGPlayerManager {
         return getInstance()._getMGPlayer(player);
     }
 
-    public Optional<MGPlayer> _getMGPlayer(@NotNull Player player) {
-        MGPlayer mgPlayer = playerMap.get(player);
-        return Optional.ofNullable(mgPlayer);
-    }
-
-
     /**
      * Neuen MGPlayer anlegen
      *
      * @param player Player für den MGPlayer angelegt werden soll
      */
-    public static void addMGPlayer(@NotNull Player player) {
-        getInstance()._addMGPlayer(player);
-    }
-
-    public void _addMGPlayer(@NotNull Player player) {
-        MGPlayer mgPlayer = new MGPlayer(player);
-        playerMap.put(player, mgPlayer);
+    public static void addMGPlayer(@NotNull Player player, MiniGame currentGame) {
+        getInstance()._addMGPlayer(player, currentGame);
     }
 
     /**
@@ -65,6 +54,16 @@ public class MGPlayerManager {
      */
     public static void removeMGPlayer(@NotNull Player player) {
         getInstance()._removeMGPlayer(player);
+    }
+
+    public Optional<MGPlayer> _getMGPlayer(@NotNull Player player) {
+        MGPlayer mgPlayer = playerMap.get(player);
+        return Optional.ofNullable(mgPlayer);
+    }
+
+    public void _addMGPlayer(@NotNull Player player, MiniGame currentGame) {
+        MGPlayer mgPlayer = new MGPlayer(player, currentGame);
+        playerMap.put(player, mgPlayer);
     }
 
     public void _removeMGPlayer(@NotNull Player player) {
