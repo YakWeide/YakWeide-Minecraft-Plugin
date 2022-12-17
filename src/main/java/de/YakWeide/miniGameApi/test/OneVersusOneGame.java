@@ -17,6 +17,10 @@ public class OneVersusOneGame extends MiniGame {
         return NAME;
     }
 
+    public String toString(){
+        return NAME;
+    }
+
     @Override
     public void setChallenged(Player challenged) {
         this.challenged = challenged;

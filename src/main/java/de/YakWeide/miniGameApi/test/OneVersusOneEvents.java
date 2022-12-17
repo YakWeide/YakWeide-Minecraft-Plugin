@@ -16,6 +16,8 @@ public class OneVersusOneEvents implements Listener {
         if(!game.isPresent()){
             return;
         }
+        event.setKeepLevel(true);
+        event.setKeepInventory(true);
         OneVersusOneGame oneVersusOneGame = (OneVersusOneGame) game.get(); //TODO: Muss man diesen cast machen, zur Laufzeit ist das ja sowieso ein OneVersusOneGame?
         GameFlowManager.announceWinner(player, oneVersusOneGame);
 

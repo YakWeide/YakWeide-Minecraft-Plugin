@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class OneVersusOneCommands implements CommandExecutor {
+    private static final ChatApi chatApi = ChatApi.getInstance();
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
         //Only accept Commands coming from human
@@ -18,7 +19,11 @@ public class OneVersusOneCommands implements CommandExecutor {
         }
         Player player = (Player) sender;
 
-        OneVersusOneGame game = new OneVersusOneGame(player);
-        return GameFlowManager.startGame(game, args);
+        if(label.equalsIgnoreCase("challengetest")){
+            OneVersusOneGame game = new OneVersusOneGame(player);
+            return GameFlowManager.startGame(game, args);
+        }
+        return false;
+
     }
 }

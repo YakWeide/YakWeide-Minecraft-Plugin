@@ -55,7 +55,6 @@ public class GameFlowManager {
             chatApi.sendMessage(game.getChallenger(), ChatApi.badColor + game.getChallenged().getName() + " ist bereits in einem Minispiel!");
             return false;
         }
-
         // Prüft auch ob challenged == null und fängt das ab
         InvitationManager.invite(game.getChallenger(), game.getChallenged(), game);
         return true;

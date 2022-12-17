@@ -5,6 +5,8 @@ import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationCommands;
 import de.YakWeide.invitations.InvitationEvents;
 import de.YakWeide.miniGameApi.MiniGameApiCommands;
+import de.YakWeide.miniGameApi.test.OneVersusOneCommands;
+import de.YakWeide.oneVersusOne.OneVersusOneEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -25,6 +27,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
     plugin = this;
     getServer().getPluginManager().registerEvents(new Events(), this);
     getServer().getPluginManager().registerEvents(new InvitationEvents(), this);
+    getServer().getPluginManager().registerEvents(new OneVersusOneEvents(), this);
     Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
     ChatApi chatApi = ChatApi.getInstance();
     Objects.requireNonNull(this.getCommand("rps")).setExecutor(new RpsMain());
@@ -33,6 +36,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
     Objects.requireNonNull(this.getCommand("decline")).setExecutor(new InvitationCommands());
     Objects.requireNonNull(this.getCommand("invitationtest")).setExecutor(new InvitationCommands());
     Objects.requireNonNull(this.getCommand("cancelGame")).setExecutor(new MiniGameApiCommands());
+    Objects.requireNonNull(this.getCommand("challengetest")).setExecutor(new OneVersusOneCommands());
 
     chatApi.BroadcastMessage("Plugin started");
   }
