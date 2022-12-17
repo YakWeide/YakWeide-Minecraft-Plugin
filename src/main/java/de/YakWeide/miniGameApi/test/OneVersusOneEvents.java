@@ -16,7 +16,7 @@ public class OneVersusOneEvents implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        Optional<MiniGame> game = PlayerInfo.getMiniGameOf(player, OneVersusOneGame.NAME);
+        Optional<MiniGame> game = PlayerInfo.getMiniGameOf(player, OneVersusOneGame.class);
         if (!game.isPresent()) {
             return;
         }

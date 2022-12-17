@@ -17,23 +17,23 @@ public class PlayerInfo {
      * nameOfGame null : Get the current Minigame of a player
      *
      * @param player     The Player you want the currentMiniGame of
-     * @param nameOfGame Specifies the type of minigame the player should be in, can be null if you generally want the MiniGame the player is in
+     * @param typeOfGame Specifies the type of minigame the player should be in, can be null if you generally want the MiniGame the player is in
      * @return Optional with the minigame if he is in one /if he is in one with the right type, else empty Optional
      */
-    public static Optional<MiniGame> getMiniGameOf(@NonNull Player player, String nameOfGame) {
+    public static <T extends MiniGame> Optional<MiniGame> getMiniGameOf(@NonNull Player player,  Class<T> typeOfGame) {
         Optional<MiniGame> miniGame = Optional.empty();
 
-        //get the minigame of player if there is one
+        //get the mini-game of player if there is one
         if (MGPlayerManager.getMGPlayer(player).isPresent() && MGPlayerManager.getMGPlayer(player).get().getCurrentGame().isPresent()) {
             miniGame = MGPlayerManager.getMGPlayer(player).get().getCurrentGame();
         }
 
         // If the type of game does not matter return miniGame now
-        if (nameOfGame == null) {
+        if (typeOfGame == null) {
             return miniGame;
         }
         // If the type does matter check if the type is correct
-        if (miniGame.isPresent() && (miniGame.get().getName().equals(nameOfGame))) {
+        if (miniGame.isPresent() && (miniGame.get().getClass().equals(typeOfGame))) {
             return miniGame;
         }
         return Optional.empty();
