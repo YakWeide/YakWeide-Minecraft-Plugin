@@ -43,7 +43,7 @@ public class PlayerInfo {
 
     /**
      * Find out if a player is in a particular type of minigame (identified by the constant name of the minigame)
-     * Will fail if ther is a second MiniGame with the same Name or getName is not implemented as intended.
+     * Will fail if there is a second MiniGame with the same Name or getName is not implemented as intended.
      *
      * @param player player whose status you want to know
      * @param name   The game type you want to know if player is in a game of that sort

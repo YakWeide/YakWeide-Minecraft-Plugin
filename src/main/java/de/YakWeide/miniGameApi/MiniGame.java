@@ -5,18 +5,26 @@ import org.bukkit.entity.Player;
 
 /**
  * Your MiniGame has to implement this Interface if you want to use the MiniGame API
- *
+ * Your MiniGame has to have the attributes:
+ * Player challenger
+ * Player challenged
+ * public static final String NAME
  * @author Jan Reitz
  */
 public abstract class MiniGame implements InvitationApiUser {
 
     /**
      * This name will be used for chat messages regarding invitations, ...
+     * Is also used to find out if a player is in a minigame of your type
      * give your MiniGame an Attribute public static final NAME = "whatever name you like" and return it
      * @return The Name of your MiniGame. NOT NULL!
      */
     public abstract String getName();
 
+    /**
+     * Used to set the challenged attribute of your game
+     * @param challenged the challanged
+     */
     public abstract  void setChallenged(Player challenged);
 
     /**
