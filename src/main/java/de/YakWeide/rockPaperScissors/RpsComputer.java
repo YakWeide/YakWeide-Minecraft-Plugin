@@ -1,4 +1,4 @@
-package de.YakWeide.RockPaperScissors;
+package de.YakWeide.rockPaperScissors;
 
 import java.util.Random;
 
@@ -17,7 +17,7 @@ public class RpsComputer extends RpsPlayer {
             this.hand = RpsOptions.ROCK;
         } else if (random == 1) {
             this.hand = RpsOptions.PAPER;
-        } else if (random == 2) {
+        } else {
             this.hand = RpsOptions.SCISSORS;
         }
         return true;

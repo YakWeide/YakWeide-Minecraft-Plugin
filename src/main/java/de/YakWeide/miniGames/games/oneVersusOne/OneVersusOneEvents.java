@@ -1,8 +1,8 @@
-package de.YakWeide.miniGameApi.test;
+package de.YakWeide.miniGames.games.oneVersusOne;
 
-import de.YakWeide.miniGameApi.GameFlowManager;
-import de.YakWeide.miniGameApi.MiniGame;
-import de.YakWeide.miniGameApi.PlayerInfo;
+import de.YakWeide.miniGames.miniGameApi.GameFlowManager;
+import de.YakWeide.miniGames.miniGameApi.MiniGame;
+import de.YakWeide.miniGames.miniGameApi.PlayerInfo;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

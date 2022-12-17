@@ -1,4 +1,4 @@
-package de.YakWeide.miniGameApi;
+package de.YakWeide.miniGames.miniGameApi;
 
 import de.YakWeide.invitations.InvitationApiUser;
 import org.bukkit.entity.Player;

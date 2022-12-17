@@ -1,4 +1,4 @@
-package de.YakWeide.RockPaperScissors;
+package de.YakWeide.rockPaperScissors;
 
 public enum RpsOptions {
     ROCK, PAPER, SCISSORS

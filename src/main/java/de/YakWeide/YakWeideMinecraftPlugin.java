@@ -1,12 +1,12 @@
 package de.YakWeide;
 
-import de.YakWeide.RockPaperScissors.RpsMain;
+import de.YakWeide.rockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationCommands;
 import de.YakWeide.invitations.InvitationEvents;
-import de.YakWeide.miniGameApi.MiniGameApiCommands;
-import de.YakWeide.miniGameApi.test.OneVersusOneCommands;
-import de.YakWeide.miniGameApi.test.OneVersusOneEvents;
+import de.YakWeide.miniGames.miniGameApi.MiniGameApiCommands;
+import de.YakWeide.miniGames.games.oneVersusOne.OneVersusOneCommands;
+import de.YakWeide.miniGames.games.oneVersusOne.OneVersusOneEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,7 +20,7 @@ import java.util.Objects;
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
     public static Plugin plugin;
-    public static ArrayList<YakPlayer> yakPlayerList = new ArrayList<YakPlayer>();
+    public static ArrayList<YakPlayer> yakPlayerList = new ArrayList<>();
 
     @Override
     public void onEnable() {

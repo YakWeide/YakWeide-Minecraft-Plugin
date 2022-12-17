@@ -1,4 +1,4 @@
-package de.YakWeide.RockPaperScissors;
+package de.YakWeide.rockPaperScissors;
 
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;

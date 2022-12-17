@@ -1,4 +1,4 @@
-package de.YakWeide.miniGameApi;
+package de.YakWeide.miniGames.miniGameApi;
 
 import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationManager;
@@ -24,7 +24,6 @@ public class GameFlowManager {
      *
      * @param game the minigame you want to start
      * @param args the String[] you get from your command
-     * @throws NullPointerException
      */
     public static boolean startGame(@NonNull MiniGame game, @NonNull String[] args) throws NullPointerException {
         if (!(game.getName() != null && game.getChallenger() != null)) {

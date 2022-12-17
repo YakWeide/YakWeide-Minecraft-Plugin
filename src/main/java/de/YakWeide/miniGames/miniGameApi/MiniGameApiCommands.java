@@ -1,4 +1,4 @@
-package de.YakWeide.miniGameApi;
+package de.YakWeide.miniGames.miniGameApi;
 
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.command.Command;

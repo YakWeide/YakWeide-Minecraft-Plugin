@@ -1,6 +1,6 @@
-package de.YakWeide.miniGameApi.test;
+package de.YakWeide.miniGames.games.oneVersusOne;
 
-import de.YakWeide.miniGameApi.MiniGame;
+import de.YakWeide.miniGames.miniGameApi.MiniGame;
 import org.bukkit.entity.Player;
 
 public class OneVersusOneGame extends MiniGame {
@@ -38,6 +38,5 @@ public class OneVersusOneGame extends MiniGame {
 
     @Override
     public void onGameStart() {
-        return;
     }
 }
