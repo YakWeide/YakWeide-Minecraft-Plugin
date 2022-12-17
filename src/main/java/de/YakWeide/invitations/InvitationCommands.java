@@ -13,7 +13,7 @@ public class InvitationCommands implements CommandExecutor {
     private final ChatApi chatApi = ChatApi.getInstance();
 
     @Override
-    public boolean onCommand(@NonNull CommandSender sender,@NonNull Command cmd,@NonNull String label, String[] args) {
+    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command cmd, @NonNull String label, String[] args) {
         //Only accept Commands coming from human
         if (!(sender instanceof Player)) {
             return false;
@@ -26,7 +26,7 @@ public class InvitationCommands implements CommandExecutor {
             Invitation invitation = invitationPlayer.getMostRecentInvitation();
 
             //Check if player has an open Invitation
-            if(invitation == null || invitation.getInviter() == player){
+            if (invitation == null || invitation.getInviter() == player) {
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
                 return true;
             }
@@ -41,15 +41,12 @@ public class InvitationCommands implements CommandExecutor {
             invitation.getType().onAcceptedInvitation();
             InvitationManager.removeInvitation(invitation);
             return true;
-        }
-
-
-        else if(label.equalsIgnoreCase("decline")){
+        } else if (label.equalsIgnoreCase("decline")) {
             InvitationPlayer invitationPlayer = InvitationManager.getInvitationPlayer(player);
             Invitation invitation = invitationPlayer.getMostRecentInvitation();
 
             //Check if player has an open Invitation
-            if(invitation == null || invitation.getInviter() == player){
+            if (invitation == null || invitation.getInviter() == player) {
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
                 return true;
             }
@@ -62,22 +59,19 @@ public class InvitationCommands implements CommandExecutor {
             InvitationManager.removeInvitation(invitation);
 
             return true;
-        }
-
-
-        else if(label.equalsIgnoreCase("invitationtest")) {
-            if(args.length != 1){
+        } else if (label.equalsIgnoreCase("invitationtest")) {
+            if (args.length != 1) {
                 return false;
             }
             Player invitedPlayer = null;
-            for(Player p : Bukkit.getOnlinePlayers()){
-                if(p.getName().equals(args[0])){
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (p.getName().equals(args[0])) {
                     invitedPlayer = p;
                     break;
                 }
 
             }
-            InvitationTest test= new InvitationTest(player, invitedPlayer);
+            InvitationTest test = new InvitationTest(player, invitedPlayer);
             InvitationManager.invite(player, invitedPlayer, test);
             return true;
         }

@@ -3,7 +3,6 @@ package de.YakWeide.miniGameApi;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -12,7 +11,7 @@ import java.util.Optional;
  * Nötig da durch Angabe von Player auf Eigenschaften von MGPlayer zugegriffen werden muss
  * Singleton Pattern
  *
- * @author Jan Reitz
+ * @author Jan Reitz, Tim Lisemer
  */
 public class MGPlayerManager {
     private static MGPlayerManager instance;

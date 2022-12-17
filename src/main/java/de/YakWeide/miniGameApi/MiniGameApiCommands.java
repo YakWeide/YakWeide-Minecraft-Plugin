@@ -9,6 +9,13 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
 
+/**
+ * Commands the Api uses:
+ * /cancelGame: Player cancels his current game
+ * /getGame: Player gets the type of game he is in
+ *
+ * @author: Jan Reitz, Tim Lisemer
+ */
 public class MiniGameApiCommands implements CommandExecutor {
 
     @Override
@@ -29,14 +36,13 @@ public class MiniGameApiCommands implements CommandExecutor {
             return true;
         }
 
-        if(label.equalsIgnoreCase("getGame")){
+        if (label.equalsIgnoreCase("getGame")) {
             Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
-            if(mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()){
+            if (mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()) {
                 MiniGame game = mgPlayer.get().getCurrentGame().get();
                 ChatApi chatApi = ChatApi.getInstance();
                 chatApi.sendMessage(player, "Dein aktuelles Minispiel heißt: " + game.getName());
-            }
-            else{
+            } else {
                 ChatApi chatApi = ChatApi.getInstance();
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
             }

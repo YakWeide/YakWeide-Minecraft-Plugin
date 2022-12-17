@@ -7,21 +7,18 @@ public abstract class RpsPlayer {
     public UUID id;
     //name of minecraft player, "computer" if RpsPlayer is computer
     public String name;
+    protected RpsOptions hand;
 
     public String getName() {
         return name;
     }
 
-
     public UUID getId() {
         return id;
     }
-
-
-    protected RpsOptions hand;
     // getter
 
-    public RpsOptions getHand(){
+    public RpsOptions getHand() {
         return this.hand;
     }
 

@@ -4,6 +4,11 @@ import org.bukkit.entity.Player;
 
 import java.util.Optional;
 
+/**
+ * Wrapper for Player because the Api needs to know the current MiniGame of a Player
+ *
+ * @author Jan Reitz, Tim Lisemer
+ */
 public class MGPlayer {
     private final Player root;
     private MiniGame currentGame;

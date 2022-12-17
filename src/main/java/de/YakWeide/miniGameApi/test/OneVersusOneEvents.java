@@ -14,10 +14,10 @@ import java.util.Optional;
 
 public class OneVersusOneEvents implements Listener {
     @EventHandler
-    public void onPlayerDeath(PlayerDeathEvent event){
+    public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         Optional<MiniGame> game = PlayerInfo.getMiniGameOf(player, OneVersusOneGame.NAME);
-        if(!game.isPresent()){
+        if (!game.isPresent()) {
             return;
         }
         event.setKeepLevel(true);

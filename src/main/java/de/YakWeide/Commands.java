@@ -12,7 +12,7 @@ public class Commands implements CommandExecutor {
     private final ChatApi chatApi = ChatApi.getInstance();
 
     @Override
-    public boolean onCommand(@NonNull CommandSender sender,@NonNull  Command cmd,@NonNull  String label, String[] args) {
+    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command cmd, @NonNull String label, String[] args) {
         //Only Players are allowed to send commands
         if (!(sender instanceof Player)) {
             return false;
