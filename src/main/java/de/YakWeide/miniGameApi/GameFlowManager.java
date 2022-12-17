@@ -31,7 +31,7 @@ public class GameFlowManager {
         }
 
         //Check if challenger already is in a minigame
-        if (PlayerInfo.isInMiniGame(game.getChallenger())) {
+        if (PlayerInfo.getMiniGameOf(game.getChallenger(), null).isPresent()) {
             chatApi.sendMessage(game.getChallenger(), ChatApi.badColor + "Du bist bereits in einem Minispiel!");
             return false;
         }
@@ -51,7 +51,7 @@ public class GameFlowManager {
         game.setChallenged(challenged);
 
         //Check if challenged already is in a minigame
-        if (PlayerInfo.isInMiniGame(game.getChallenged())) {
+        if (PlayerInfo.getMiniGameOf(game.getChallenged(), null).isPresent()) {
             chatApi.sendMessage(game.getChallenger(), ChatApi.badColor + game.getChallenged().getName() + " ist bereits in einem Minispiel!");
             return false;
         }
