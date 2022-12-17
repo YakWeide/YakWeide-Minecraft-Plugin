@@ -50,6 +50,10 @@ public abstract class MiniGame implements InvitationApiUser {
      */
     public abstract void onGameStart();
 
+    public String toString(){
+        return this.getName();
+    }
+
     //abstrahiere InvitationAPI
     public void onAcceptedInvitation() {
         MGPlayerManager.addMGPlayer(this.getChallenger(), this);

@@ -17,10 +17,6 @@ public class OneVersusOneGame extends MiniGame {
         return NAME;
     }
 
-    public String toString() {
-        return NAME;
-    }
-
     @Override
     public Player getChallenger() {
         return this.challenger;
