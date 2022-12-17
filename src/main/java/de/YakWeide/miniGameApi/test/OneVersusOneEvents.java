@@ -25,7 +25,7 @@ public class OneVersusOneEvents implements Listener {
         List<ItemStack> dropList = event.getDrops();
         dropList.clear();
         OneVersusOneGame oneVersusOneGame = (OneVersusOneGame) game.get(); //TODO: Muss man diesen cast machen, zur Laufzeit ist das ja sowieso ein OneVersusOneGame?
-        GameFlowManager.announceWinner(oneVersusOneGame, player, "public");
+        GameFlowManager.announceWinner(null, player, oneVersusOneGame, true);
 
     }
 

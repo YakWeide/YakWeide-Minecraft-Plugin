@@ -77,7 +77,7 @@ public class GameFlowManager {
             winner = GameFlowManager.calculateWinner(game, loser);
         }
         if(loser == null){
-            loser = GameFlowManager.calculateLoser(winner, game):
+            loser = GameFlowManager.calculateLoser(winner, game);
         }
         if(announceToEveryone){
             chatApi.BroadcastMessage(ChatApi.prefixColor + winner.getName() + " hat " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
