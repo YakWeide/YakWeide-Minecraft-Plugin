@@ -3,6 +3,7 @@ package de.YakWeide.miniGames.miniGameApi;
 import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationManager;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -81,10 +82,10 @@ public class GameFlowManager {
             loser = GameFlowManager.calculateLoser(winner, game);
         }
         if (announceToEveryone) {
-            chatApi.BroadcastMessage(ChatApi.prefixColor + winner.getName() + " hat " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
+            chatApi.BroadcastMessage(ChatApi.prefixColor + chatApi.playerName(winner) + " hat " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
         } else {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
+            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + ChatColor.GOLD + game.getName() + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
+            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + chatApi.playerName(winner) + " verloren!");
         }
         MGPlayerManager.removeMGPlayer(winner);
         MGPlayerManager.removeMGPlayer(loser);

@@ -1,4 +1,4 @@
-package de.YakWeide.rockPaperScissors;
+package de.YakWeide.miniGames.games.rockPaperScissors;
 
 import java.util.Random;
 

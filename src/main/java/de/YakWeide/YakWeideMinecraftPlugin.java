@@ -1,6 +1,6 @@
 package de.YakWeide;
 
-import de.YakWeide.rockPaperScissors.RpsMain;
+import de.YakWeide.miniGames.games.rockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationCommands;
 import de.YakWeide.invitations.InvitationEvents;

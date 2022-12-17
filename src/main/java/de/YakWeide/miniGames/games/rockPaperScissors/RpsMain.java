@@ -1,4 +1,4 @@
-package de.YakWeide.rockPaperScissors;
+package de.YakWeide.miniGames.games.rockPaperScissors;
 
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.Bukkit;
@@ -7,7 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
-
 import java.util.ArrayList;
 
 public class RpsMain implements CommandExecutor {
