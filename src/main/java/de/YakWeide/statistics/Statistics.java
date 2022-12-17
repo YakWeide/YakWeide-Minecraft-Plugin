@@ -1,4 +1,4 @@
-package de.YakWeide.Statistics;
+package de.YakWeide.statistics;
 
 import de.YakWeide.YakPlayer;
 

@@ -1,6 +1,6 @@
 package de.YakWeide;
 
-import de.YakWeide.Statistics.Statistics;
+import de.YakWeide.statistics.Statistics;
 import de.YakWeide.invitations.Invitation;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
