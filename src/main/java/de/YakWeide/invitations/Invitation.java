@@ -25,14 +25,16 @@ public class Invitation {
         return invitee;
     }
 
+    public void setInvitee(Player invitee) {
+        this.invitee = invitee;
+    }
+
     public boolean containsInvitee(Player p) {
         return getInvitee() == p;
     }
 
-    public boolean containsInviter(Player p){return getInviter() == p;}
-
-    public void setInvitee(Player invitee) {
-        this.invitee = invitee;
+    public boolean containsInviter(Player p) {
+        return getInviter() == p;
     }
 
     public InvitationApiUser getType() {

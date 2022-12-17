@@ -20,7 +20,7 @@ public class InvitationTest implements InvitationApiUser {
 
     }
 
-    public String toString(){
+    public String toString() {
         return "Test";
     }
 }

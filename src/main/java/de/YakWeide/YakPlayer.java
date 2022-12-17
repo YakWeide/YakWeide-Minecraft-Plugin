@@ -34,30 +34,30 @@ public class YakPlayer {
         this.statistics = new Statistics(this);
     }
 
-    public Player getRoot() {
-        return player;
-    }
-
-    public static ArrayList<YakPlayer> InitializeYakPlayerAtStartup(){
-        ArrayList<YakPlayer> yakPlayerList= new ArrayList<YakPlayer>();
-        for(Player p : Bukkit.getOnlinePlayers()){
+    public static ArrayList<YakPlayer> InitializeYakPlayerAtStartup() {
+        ArrayList<YakPlayer> yakPlayerList = new ArrayList<YakPlayer>();
+        for (Player p : Bukkit.getOnlinePlayers()) {
             yakPlayerList.add(new YakPlayer(p));
         }
         return yakPlayerList;
     }
 
-    public static boolean isInYakPlayerList(Player player){
-        for(YakPlayer yakPlayer : YakWeideMinecraftPlugin.yakPlayerList){
-            if(yakPlayer.getRoot().equals(player)) return true;
+    public static boolean isInYakPlayerList(Player player) {
+        for (YakPlayer yakPlayer : YakWeideMinecraftPlugin.yakPlayerList) {
+            if (yakPlayer.getRoot().equals(player)) return true;
         }
         return false;
     }
 
-    public static YakPlayer getYakPlayer(Player player){
-        for(YakPlayer yakPlayer : YakWeideMinecraftPlugin.yakPlayerList){
-            if(yakPlayer.getRoot().equals(player)) return yakPlayer;
+    public static YakPlayer getYakPlayer(Player player) {
+        for (YakPlayer yakPlayer : YakWeideMinecraftPlugin.yakPlayerList) {
+            if (yakPlayer.getRoot().equals(player)) return yakPlayer;
         }
         return null;
+    }
+
+    public Player getRoot() {
+        return player;
     }
 
     public boolean isInPussymodus() {

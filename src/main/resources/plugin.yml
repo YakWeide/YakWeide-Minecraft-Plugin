@@ -12,3 +12,6 @@ commands:
   accept:
   decline:
   invitationtest:
+  cancelGame:
+  challengetest:
+  getgame:
