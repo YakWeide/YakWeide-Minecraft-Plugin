@@ -1,9 +1,6 @@
-package de.YakWeide.RockPaperScissors;
+package de.YakWeide.rockPaperScissors;
 
 import de.YakWeide.chatApi.ChatApi;
-
-import java.util.ArrayList;
-
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,11 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import java.util.ArrayList;
+
 public class RpsMain implements CommandExecutor {
 
     private final ChatApi chatApi = ChatApi.getInstance();
 
-    public boolean onCommand(@NonNull CommandSender sender, @NonNull  Command cmd, String label, String[] args) {
+    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command cmd, String label, String[] args) {
         // options for rps command: /rps computer, /rps player name, if computer: starts a rps game against computer, if {player name} ask challenged player if they want to play if yes: start game against them
         if (label.equalsIgnoreCase("rps")) {
             RpsGame game = new RpsGame();
