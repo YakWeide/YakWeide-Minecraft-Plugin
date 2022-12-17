@@ -29,7 +29,6 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InvitationEvents(), this);
         getServer().getPluginManager().registerEvents(new OneVersusOneEvents(), this);
         Bukkit.getServer().getPluginManager().registerEvents(ChatApi.getInstance(), this);   //Register Chat Event
-        ChatApi chatApi = ChatApi.getInstance();
         Objects.requireNonNull(this.getCommand("rps")).setExecutor(new RpsMain());
         Objects.requireNonNull(this.getCommand("coords")).setExecutor(new Commands());
         Objects.requireNonNull(this.getCommand("accept")).setExecutor(new InvitationCommands());
@@ -39,7 +38,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("getgame")).setExecutor(new MiniGameApiCommands());
         Objects.requireNonNull(this.getCommand("challengetest")).setExecutor(new OneVersusOneCommands());
 
-        chatApi.BroadcastMessage("Plugin started");
+        ChatApi.broadcastMessage("Plugin started");
     }
 
     @Override

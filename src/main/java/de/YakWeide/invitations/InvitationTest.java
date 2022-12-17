@@ -14,9 +14,8 @@ public class InvitationTest implements InvitationApiUser {
 
     @Override
     public void onAcceptedInvitation() {
-        ChatApi chatApi = ChatApi.getInstance();
-        chatApi.sendMessage(inviter, ChatApi.goodColor + "Hat geklappt!");
-        chatApi.sendMessage(invitee, ChatApi.goodColor + "Hat geklappt!");
+        ChatApi.sendMessage(inviter, ChatApi.goodColor + "Hat geklappt!");
+        ChatApi.sendMessage(invitee, ChatApi.goodColor + "Hat geklappt!");
 
     }
 
