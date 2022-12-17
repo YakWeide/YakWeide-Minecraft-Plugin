@@ -1,7 +1,8 @@
 package de.YakWeide.miniGameApi;
 
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 
 import java.util.HashMap;
 import java.util.Optional;
@@ -34,7 +35,7 @@ public class MGPlayerManager {
      * @param player Player für den MGPlayer angefordert werden soll
      * @return MGPlayer, wenn vorhanden. Sonst leeres Optional.
      */
-    public static Optional<MGPlayer> getMGPlayer(@NotNull Player player) {
+    public static Optional<MGPlayer> getMGPlayer(@NonNull Player player) {
         return getInstance()._getMGPlayer(player);
     }
 
@@ -43,7 +44,7 @@ public class MGPlayerManager {
      *
      * @param player Player für den MGPlayer angelegt werden soll
      */
-    public static void addMGPlayer(@NotNull Player player, MiniGame currentGame) {
+    public static void addMGPlayer(@NonNull Player player, MiniGame currentGame) {
         getInstance()._addMGPlayer(player, currentGame);
     }
 
@@ -52,21 +53,21 @@ public class MGPlayerManager {
      *
      * @param player Spieler dessen MGPlayer gelöscht werden soll
      */
-    public static void removeMGPlayer(@NotNull Player player) {
+    public static void removeMGPlayer(@NonNull Player player) {
         getInstance()._removeMGPlayer(player);
     }
 
-    public Optional<MGPlayer> _getMGPlayer(@NotNull Player player) {
+    public Optional<MGPlayer> _getMGPlayer(@NonNull Player player) {
         MGPlayer mgPlayer = playerMap.get(player);
         return Optional.ofNullable(mgPlayer);
     }
 
-    public void _addMGPlayer(@NotNull Player player, MiniGame currentGame) {
+    public void _addMGPlayer(@NonNull Player player, MiniGame currentGame) {
         MGPlayer mgPlayer = new MGPlayer(player, currentGame);
         playerMap.put(player, mgPlayer);
     }
 
-    public void _removeMGPlayer(@NotNull Player player) {
+    public void _removeMGPlayer(@NonNull Player player) {
         playerMap.remove(player);
     }
 

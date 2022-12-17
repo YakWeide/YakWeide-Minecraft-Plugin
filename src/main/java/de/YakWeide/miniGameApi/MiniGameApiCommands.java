@@ -5,14 +5,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
 
 public class MiniGameApiCommands implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command cmd, @NonNull String label, @NonNull String[] args) {
         //Only accept Commands coming from human
         if (!(sender instanceof Player)) {
             return false;
@@ -23,6 +23,20 @@ public class MiniGameApiCommands implements CommandExecutor {
             if (mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()) {
                 GameFlowManager.cancelGame(mgPlayer.get().getCurrentGame().get());
             } else {
+                ChatApi chatApi = ChatApi.getInstance();
+                chatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
+            }
+            return true;
+        }
+
+        if(label.equalsIgnoreCase("getGame")){
+            Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
+            if(mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()){
+                MiniGame game = mgPlayer.get().getCurrentGame().get();
+                ChatApi chatApi = ChatApi.getInstance();
+                chatApi.sendMessage(player, "Dein aktuelles Minispiel heißt: " + game.getName());
+            }
+            else{
                 ChatApi chatApi = ChatApi.getInstance();
                 chatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
             }

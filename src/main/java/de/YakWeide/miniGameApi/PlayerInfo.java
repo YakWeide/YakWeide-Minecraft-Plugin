@@ -1,7 +1,7 @@
 package de.YakWeide.miniGameApi;
 
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ public class PlayerInfo {
      * @param player player whoms status you want to know
      * @return true if player is in minigame, false otherwise
      */
-    public static boolean isInMiniGame(@NotNull Player player) {
+    public static boolean isInMiniGame(@NonNull Player player) {
         Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
         if (mgPlayer.isPresent()) {
             return mgPlayer.get().getCurrentGame().isPresent();
@@ -32,7 +32,7 @@ public class PlayerInfo {
      * @param game   The game you want to know if player is in it
      * @return true if player is in MiniGame game, else otherwise
      */
-    public static boolean isInMiniGame(@NotNull Player player, @NotNull MiniGame game) {
+    public static boolean isInMiniGame(@NonNull Player player, @NonNull MiniGame game) {
         if (isInMiniGame(player)) {
             Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
             return mgPlayer.get().getCurrentGame().get() == game;
@@ -49,7 +49,7 @@ public class PlayerInfo {
      * @param name   The game type you want to know if player is in a game of that sort
      * @return true if player is in MiniGameType identified by name.
      */
-    public static boolean isInMiniGame(@NotNull Player player, @NotNull String name) {
+    public static boolean isInMiniGame(@NonNull Player player, @NonNull String name) {
         Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
         return (mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent() && mgPlayer.get().getCurrentGame().get().getName().equalsIgnoreCase(name));
     }
@@ -60,7 +60,7 @@ public class PlayerInfo {
      * @param player The Player you want the currentMiniGame of
      * @return Optional with the minigame if there is one, else empty Optional
      */
-    public static Optional<MiniGame> getMiniGameOf(@NotNull Player player) {
+    public static Optional<MiniGame> getMiniGameOf(@NonNull Player player) {
         if (MGPlayerManager.getMGPlayer(player).isPresent()) {
             return MGPlayerManager.getMGPlayer(player).get().getCurrentGame();
         }
@@ -74,7 +74,7 @@ public class PlayerInfo {
      * @param name   Specifies the type of minigame the player should be in
      * @return Optional with the minigame if he is in one with the right type, else empty Optional
      */
-    public static Optional<MiniGame> getMiniGameOf(@NotNull Player player, @NotNull String name) {
+    public static Optional<MiniGame> getMiniGameOf(@NonNull Player player, @NonNull String name) {
         if (isInMiniGame(player, name)) {
             return getMiniGameOf(player);
         }
