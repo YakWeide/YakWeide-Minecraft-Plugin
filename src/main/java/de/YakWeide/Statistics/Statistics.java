@@ -1,7 +1,6 @@
-package Statistics;
+package de.YakWeide.Statistics;
 
 import de.YakWeide.YakPlayer;
-import de.YakWeide.YakWeideMinecraftPlugin;
 
 public class Statistics {
 
