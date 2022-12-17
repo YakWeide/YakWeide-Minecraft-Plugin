@@ -64,19 +64,25 @@ public class GameFlowManager {
      * If the game is finished, and you want to announce the winner call this method
      * Will automatically cancel the minigame
      *
-     * @param winner     The winner of the minigame
-     * @param loser      The loser of the minigame
+     * @param winner     The winner of the minigame, either winner or loser can be null
+     * @param loser      The loser of the minigame, either winner or loser can be null but one has to exist
      * @param game       The finished game
-     * @param announceTo "private": Only the participants will be informed, "public": The whole Server will be informed
+     * @param announceToEveryone false: Only participants will be informed, false: The whole server will be informed
      */
-    public static void announceWinner(@NonNull Player winner, @NonNull Player loser, @NonNull MiniGame game, @NonNull String announceTo) {
-        if (announceTo.equalsIgnoreCase("private")) {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        } else if (announceTo.equalsIgnoreCase("public")) {
+    public static void announceWinner(Player winner,Player loser, @NonNull MiniGame game, boolean announceToEveryone) throws NullPointerException{
+        if(winner == null && loser == null){
+            throw new NullPointerException("Either winner or loser hast to be not null");
+        }
+        if(winner == null){
+            winner = GameFlowManager.calculateWinner(game, loser);
+        }
+        if(loser == null){
+            loser = GameFlowManager.calculateLoser(winner, game):
+        }
+        if(announceToEveryone){
             chatApi.BroadcastMessage(ChatApi.prefixColor + winner.getName() + " hat " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-
-        } else {
+        }
+        else{
             chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
             chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
         }
@@ -86,56 +92,13 @@ public class GameFlowManager {
         MGPlayerManager.removeMGPlayer(game.getChallenged());
     }
 
-    public static void announceWinner(@NonNull Player winner, @NonNull Player loser, @NonNull MiniGame game) {
-        chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-        chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        MGPlayerManager.removeMGPlayer(winner);
-        MGPlayerManager.removeMGPlayer(loser);
-        MGPlayerManager.removeMGPlayer(game.getChallenger());
-        MGPlayerManager.removeMGPlayer(game.getChallenged());
-    }
-
-    public static void announceWinner(@NonNull Player winner, @NonNull MiniGame game) {
-        Player loser;
-        if (winner == game.getChallenger()) {
-            loser = game.getChallenged();
-        } else {
-            loser = game.getChallenger();
-        }
-        chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-        chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        MGPlayerManager.removeMGPlayer(winner);
-        MGPlayerManager.removeMGPlayer(loser);
-        MGPlayerManager.removeMGPlayer(game.getChallenger());
-        MGPlayerManager.removeMGPlayer(game.getChallenged());
-    }
-
-    public static void announceWinner(@NonNull Player winner, @NonNull MiniGame game, @NonNull String announceTo) {
-        Player loser;
-        if (winner == game.getChallenger()) {
-            loser = game.getChallenged();
-        } else {
-            loser = game.getChallenger();
-        }
-
-
-        if (announceTo.equalsIgnoreCase("private")) {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        } else if (announceTo.equalsIgnoreCase("public")) {
-            chatApi.BroadcastMessage(ChatApi.prefixColor + winner.getName() + " hat " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-
-        } else {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        }
-        MGPlayerManager.removeMGPlayer(winner);
-        MGPlayerManager.removeMGPlayer(loser);
-        MGPlayerManager.removeMGPlayer(game.getChallenger());
-        MGPlayerManager.removeMGPlayer(game.getChallenged());
-    }
-
-    public static void announceWinner(@NonNull MiniGame game, @NonNull Player loser){
+    /**
+     * Calculates the winner of a game if you already know the loser
+     * @param game The game
+     * @param loser The loser
+     * @return The winner
+     */
+    public static Player calculateWinner(MiniGame game, Player loser){
         Player winner;
         if(loser == game.getChallenger()){
             winner = game.getChallenged();
@@ -143,32 +106,23 @@ public class GameFlowManager {
         else{
             winner = game.getChallenger();
         }
-        chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-        chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        MGPlayerManager.removeMGPlayer(winner);
-        MGPlayerManager.removeMGPlayer(loser);
-        MGPlayerManager.removeMGPlayer(game.getChallenger());
-        MGPlayerManager.removeMGPlayer(game.getChallenged());
+        return winner;
     }
 
-    public static void announceWinner(@NonNull MiniGame game, @NonNull Player loser, String announceTo){
-        Player winner;
-        if(loser == game.getChallenger()){
-            winner = game.getChallenged();
-        }
-        else{
-            winner = game.getChallenger();
-        }
-        if (announceTo.equalsIgnoreCase("private")) {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
-        } else if (announceTo.equalsIgnoreCase("public")) {
-            chatApi.BroadcastMessage(ChatApi.prefixColor + winner.getName() + " hat " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-
+    /**
+     * Calculates the loser of a game if you already know the winner
+     * @param winner The winner
+     * @param game  The game
+     * @return  The loser
+     */
+    public static Player calculateLoser(Player winner, MiniGame game){
+        Player loser;
+        if (winner == game.getChallenger()) {
+            loser = game.getChallenged();
         } else {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + game.getName() + " gegen " + loser.getName() + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + game.getName() + " gegen " + winner.getName() + " verloren!");
+            loser = game.getChallenger();
         }
+        return loser;
     }
 
 
