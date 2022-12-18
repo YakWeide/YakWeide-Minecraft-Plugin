@@ -18,7 +18,7 @@ public class ChatApi implements Listener {
     public static final ChatColor badColor = ChatColor.RED;
     public static final ChatColor playerColor = ChatColor.GOLD;
     private static final String prefix = prefixColor + "[" + ChatColor.GOLD + "YakWeide" + prefixColor + "] ";
-    //Singleton --> https://www.geeksforgeeks.org/singleton-class-java/
+
     private static ChatApi chatApi_instance = null;
     private final HashMap<UUID, String> lastMessageHashMap = new HashMap<>();
     private boolean nextMessageActive = false;
