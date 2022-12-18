@@ -14,8 +14,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  * @author Jan Reitz, Tim Lisemer
  */
 public class GameFlowManager {
-    private static final ChatApi chatApi = ChatApi.getInstance();
-
     /**
      * Call this method if you want to start a miniGame Object,make sure name and challenger are not null.
      * How it is thought to be used:
@@ -33,13 +31,13 @@ public class GameFlowManager {
 
         //Check if challenger already is in a minigame
         if (PlayerInfo.getMiniGameOf(game.getChallenger(), null).isPresent()) {
-            chatApi.sendMessage(game.getChallenger(), ChatApi.badColor + "Du bist bereits in einem Minispiel!");
+            ChatApi.sendMessage(game.getChallenger(), ChatApi.badColor + "Du bist bereits in einem Minispiel!");
             return false;
         }
 
         //Versuche challenged zu finden und setze challenged attribut von game auf ihn
         if (args.length != 1) {
-            chatApi.sendMessage(game.getChallenger(), ChatApi.badColor + "Du musst genau einen Namen als Argument angeben!");
+            ChatApi.sendMessage(game.getChallenger(), ChatApi.badColor + "Du musst genau einen Namen als Argument angeben!");
             return false;
         }
         Player challenged = null;
@@ -53,7 +51,7 @@ public class GameFlowManager {
 
         //Check if challenged already is in a minigame
         if (PlayerInfo.getMiniGameOf(game.getChallenged(), null).isPresent()) {
-            chatApi.sendMessage(game.getChallenger(), ChatApi.badColor + game.getChallenged().getName() + " ist bereits in einem Minispiel!");
+            ChatApi.sendMessage(game.getChallenger(), ChatApi.badColor + game.getChallenged().getName() + " ist bereits in einem Minispiel!");
             return false;
         }
         // Prüft auch ob challenged == null und fängt das ab
@@ -82,10 +80,10 @@ public class GameFlowManager {
             loser = GameFlowManager.calculateLoser(winner, game);
         }
         if (announceToEveryone) {
-            chatApi.BroadcastMessage(ChatApi.prefixColor + chatApi.playerName(winner) + " hat " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
+            ChatApi.broadcastMessage(ChatApi.prefixColor + ChatApi.playerName(winner) + " hat " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + ChatApi.playerName(loser) + " gewonnen!");
         } else {
-            chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + ChatColor.GOLD + game.getName() + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + chatApi.playerName(winner) + " verloren!");
+            ChatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + ChatColor.GOLD + game.getName() + ChatApi.prefixColor + " gegen " + ChatApi.playerName(loser) + " gewonnen!");
+            ChatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + ChatApi.playerName(winner) + " verloren!");
         }
         MGPlayerManager.removeMGPlayer(winner);
         MGPlayerManager.removeMGPlayer(loser);
@@ -138,8 +136,8 @@ public class GameFlowManager {
         Player challenged = game.getChallenged();
         MGPlayerManager.removeMGPlayer(challenger);
         MGPlayerManager.removeMGPlayer(challenged);
-        chatApi.sendMessage(challenger, ChatApi.badColor + game.getName() + " gegen " + challenged.getName() + " wurde beendet ");
-        chatApi.sendMessage(challenged, ChatApi.badColor + game.getName() + " gegen " + challenger.getName() + " wurde beendet ");
+        ChatApi.sendMessage(challenger, ChatApi.badColor + game.getName() + " gegen " + challenged.getName() + " wurde beendet ");
+        ChatApi.sendMessage(challenged, ChatApi.badColor + game.getName() + " gegen " + challenger.getName() + " wurde beendet ");
     }
 
 }

@@ -4,9 +4,6 @@ import de.YakWeide.chatApi.ChatApi;
 
 //play a game of Rock Paper Scissors in Minecraft
 public class RpsGame {
-
-    private final ChatApi chatApi = ChatApi.getInstance();
-
     private RpsPlayer winner;
 
     public RpsPlayer getWinner() {
@@ -46,22 +43,22 @@ public class RpsGame {
     // prints the winner to both players / to the player playing against computer, note: p1 is always a human
     private void returnWinner(RpsPlayer p1, RpsPlayer p2) {
         if (this.getWinner() == null) {
-            chatApi.sendMessage(p1.getId(), "Draw!");
+            ChatApi.sendMessage(p1.getId(), "Draw!");
             if (!(p2.getId() == null)) {
-                chatApi.sendMessage(p2.getId(), "Draw!");
+                ChatApi.sendMessage(p2.getId(), "Draw!");
             }
         }
-        chatApi.sendMessage(p1.getId(), chatApi.playerName(this.getWinner().getId()) + ChatApi.prefixColor + " has won!");
+        ChatApi.sendMessage(p1.getId(), ChatApi.playerName(this.getWinner().getId()) + ChatApi.prefixColor + " has won!");
         if (p2 instanceof RpsHuman) {
-            chatApi.sendMessage(p2.getId(), chatApi.playerName(this.getWinner().getId()) + ChatApi.prefixColor + " has won!");
+            ChatApi.sendMessage(p2.getId(), ChatApi.playerName(this.getWinner().getId()) + ChatApi.prefixColor + " has won!");
         }
     }
 
     // returns the hand of the opponent to the human
     private void returnEnemyHand(RpsPlayer p1, RpsPlayer p2) {
-        chatApi.sendMessage(p1.getId(), chatApi.playerName(p2.getName()) + ChatApi.prefixColor + " takes: " + p2.getHand());
+        ChatApi.sendMessage(p1.getId(), ChatApi.playerName(p2.getName()) + ChatApi.prefixColor + " takes: " + p2.getHand());
         if (p2 instanceof RpsHuman) {
-            chatApi.sendMessage(p2.getId(), chatApi.playerName(p2.getName()) + ChatApi.prefixColor + " takes: " + p2.getHand());
+            ChatApi.sendMessage(p2.getId(), ChatApi.playerName(p2.getName()) + ChatApi.prefixColor + " takes: " + p2.getHand());
         }
     }
 }
