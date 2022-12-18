@@ -28,7 +28,7 @@ public class MiniGameApiCommands implements CommandExecutor {
         if (label.equalsIgnoreCase("cancelGame")) {
             Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
             if (mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()) {
-                GameFlowManager.cancelGame(mgPlayer.get().getCurrentGame().get());
+                mgPlayer.get().getCurrentGame().get().cancelGame();
             } else {
                 ChatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
             }

@@ -1,6 +1,5 @@
 package de.YakWeide.miniGames.games.oneVersusOne;
 
-import de.YakWeide.miniGames.miniGameApi.GameFlowManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,8 +17,8 @@ public class OneVersusOneCommands implements CommandExecutor {
         Player player = (Player) sender;
 
         if (label.equalsIgnoreCase("challengetest")) {
-            OneVersusOneGame game = new OneVersusOneGame(player);
-            return GameFlowManager.startGame(game, args);
+            OneVersusOneGame game = new OneVersusOneGame(15, player);
+            return game.startGame(args);
         }
         return false;
 
