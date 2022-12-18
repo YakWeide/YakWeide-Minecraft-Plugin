@@ -1,5 +1,6 @@
 package de.YakWeide;
 
+import de.YakWeide.YakPlayerUtility.VerwaltungsYak;
 import de.YakWeide.miniGames.games.rockPaperScissors.RpsMain;
 import de.YakWeide.chatApi.ChatApi;
 import de.YakWeide.invitations.InvitationCommands;
@@ -14,13 +15,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public final class YakWeideMinecraftPlugin extends JavaPlugin {
 
     public static Plugin plugin;
-    public static ArrayList<YakPlayer> yakPlayerList = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -38,6 +37,12 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("cancelGame")).setExecutor(new MiniGameApiCommands());
         Objects.requireNonNull(this.getCommand("getgame")).setExecutor(new MiniGameApiCommands());
         Objects.requireNonNull(this.getCommand("challengetest")).setExecutor(new OneVersusOneCommands());
+
+        try {
+            VerwaltungsYak.InitializeYakPlayerAtStartup();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         chatApi.BroadcastMessage("Plugin started");
     }

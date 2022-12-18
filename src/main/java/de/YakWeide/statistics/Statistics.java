@@ -1,6 +1,6 @@
 package de.YakWeide.statistics;
 
-import de.YakWeide.YakPlayer;
+import de.YakWeide.YakPlayerUtility.YakPlayer;
 
 public class Statistics {
 
