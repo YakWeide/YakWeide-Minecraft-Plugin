@@ -82,10 +82,10 @@ public class GameFlowManager {
             loser = GameFlowManager.calculateLoser(winner, game);
         }
         if (announceToEveryone) {
-            chatApi.BroadcastMessage(ChatApi.prefixColor + chatApi.playerName(winner) + " hat " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
+            chatApi.BroadcastMessage(ChatApi.prefixColor + chatApi.playerName(winner) + " hat " + ChatColor.GOLD + game.getName() + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
         } else {
             chatApi.sendMessage(winner, ChatApi.goodColor + "Du hast " + ChatColor.GOLD + game.getName() + ChatApi.prefixColor + " gegen " + chatApi.playerName(loser) + " gewonnen!");
-            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + ChatColor.GOLD + game.getName()  + ChatApi.prefixColor + " gegen " + chatApi.playerName(winner) + " verloren!");
+            chatApi.sendMessage(loser, ChatApi.badColor + "Du hast " + ChatColor.GOLD + game.getName() + ChatApi.prefixColor + " gegen " + chatApi.playerName(winner) + " verloren!");
         }
         MGPlayerManager.removeMGPlayer(winner);
         MGPlayerManager.removeMGPlayer(loser);

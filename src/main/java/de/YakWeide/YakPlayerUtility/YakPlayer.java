@@ -90,10 +90,10 @@ public class YakPlayer {
     }
 
     /**
-     * Get the Property of a specific type of a player, can only be called if the propertyLimit of this propertyType is set to 1.
+     * Get the Property of a specific type from a player, can only be called if the propertyLimit of this propertyType is set to 1.
      *
      * @param propertyType The type you want the property of
-     * @return The Property of this type, null if the YakPlayer does not have one
+     * @return The Property of this type, null if the YakPlayer does not have property of specified type
      * @throws IllegalArgumentException If you call this method with a propertyType with propertyLimit != 1
      */
     @Nullable

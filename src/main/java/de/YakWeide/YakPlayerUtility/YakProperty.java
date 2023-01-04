@@ -40,7 +40,7 @@ public abstract class YakProperty {
      */
     public static void setPropertyLimit(@NonNull Class<? extends YakProperty> propertyType, int limit) throws IllegalArgumentException {
         if (limit <= 0) {
-            throw new IllegalArgumentException("Limit has to be greater than 0");
+            throw new IllegalArgumentException("Limit has to be greater than 0 ");
         }
         propertyLimits.put(propertyType, limit);
 
