@@ -1,5 +1,7 @@
 package de.YakWeide;
 
+import de.YakWeide.YakPlayerUtility.VerwaltungsYak;
+import de.YakWeide.YakPlayerUtility.YakPlayer;
 import de.YakWeide.chatApi.ChatApi;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -21,7 +23,7 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        YakPlayer yakPlayer = YakPlayer.getYakPlayer(player);
+        YakPlayer yakPlayer = VerwaltungsYak.getYakPlayer(player);
         assert yakPlayer != null;
         if (yakPlayer.getCustomQuitMessage() != null && !yakPlayer.getCustomQuitMessage().isEmpty()) {
             event.setQuitMessage(yakPlayer.getCustomQuitMessage());
@@ -40,13 +42,11 @@ public class Events implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         YakPlayer yakPlayer;
-        if (!YakPlayer.isInYakPlayerList(player)) {
-            yakPlayer = new YakPlayer(player);
-            YakWeideMinecraftPlugin.yakPlayerList.add(yakPlayer);
-        } else {
-            yakPlayer = YakPlayer.getYakPlayer(player);
-            assert yakPlayer != null;
+        if (!VerwaltungsYak.isInYakPlayerList(player)) {
+            VerwaltungsYak.addYakPlayer(player);
         }
+        yakPlayer = VerwaltungsYak.getYakPlayer(player);
+        assert yakPlayer != null;
         if (yakPlayer.getCustomJoinMessage() != null && !yakPlayer.getCustomJoinMessage().isEmpty()) {
             event.setJoinMessage(yakPlayer.getCustomJoinMessage());
         }
