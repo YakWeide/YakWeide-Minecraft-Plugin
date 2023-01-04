@@ -44,7 +44,7 @@ public final class YakWeideMinecraftPlugin extends JavaPlugin {
             throw new RuntimeException(e);
         }
 
-        chatApi.BroadcastMessage("Plugin started");
+        ChatApi.broadcastMessage("Plugin started");
     }
 
     @Override

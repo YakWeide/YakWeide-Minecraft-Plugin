@@ -28,10 +28,9 @@ public class MiniGameApiCommands implements CommandExecutor {
         if (label.equalsIgnoreCase("cancelGame")) {
             Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
             if (mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()) {
-                GameFlowManager.cancelGame(mgPlayer.get().getCurrentGame().get());
+                mgPlayer.get().getCurrentGame().get().cancelGame();
             } else {
-                ChatApi chatApi = ChatApi.getInstance();
-                chatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
+                ChatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
             }
             return true;
         }
@@ -40,11 +39,9 @@ public class MiniGameApiCommands implements CommandExecutor {
             Optional<MGPlayer> mgPlayer = MGPlayerManager.getMGPlayer(player);
             if (mgPlayer.isPresent() && mgPlayer.get().getCurrentGame().isPresent()) {
                 MiniGame game = mgPlayer.get().getCurrentGame().get();
-                ChatApi chatApi = ChatApi.getInstance();
-                chatApi.sendMessage(player, "Dein aktuelles Minispiel heißt: " + game.getName());
+                ChatApi.sendMessage(player, "Dein aktuelles Minispiel heißt: " + game.getName());
             } else {
-                ChatApi chatApi = ChatApi.getInstance();
-                chatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
+                ChatApi.sendMessage(player, ChatApi.badColor + "Du hast kein offenes Minispiel!");
             }
             return true;
         }

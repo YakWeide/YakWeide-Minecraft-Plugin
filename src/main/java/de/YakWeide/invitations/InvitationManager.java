@@ -43,13 +43,12 @@ public class InvitationManager {
     }
 
     public void _invite(Player inviter, Player invitee, InvitationApiUser obj) {
-        ChatApi chatApi = ChatApi.getInstance();
         if (invitee == null) {
-            chatApi.sendMessage(inviter, ChatApi.badColor + "There is no such Player online!");
+            ChatApi.sendMessage(inviter, ChatApi.badColor + "There is no such Player online!");
             return;
         }
         if (inviter == invitee) {
-            chatApi.sendMessage(inviter, ChatApi.badColor + "You can't invite yourself!");
+            ChatApi.sendMessage(inviter, ChatApi.badColor + "You can't invite yourself!");
             return;
         }
         Invitation invitation = new Invitation(inviter, invitee, obj);

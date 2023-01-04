@@ -10,8 +10,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class InvitationCommands implements CommandExecutor {
 
-    private final ChatApi chatApi = ChatApi.getInstance();
-
     @Override
     public boolean onCommand(@NonNull CommandSender sender, @NonNull Command cmd, @NonNull String label, String[] args) {
         //Only accept Commands coming from human
@@ -27,7 +25,7 @@ public class InvitationCommands implements CommandExecutor {
 
             //Check if player has an open Invitation
             if (invitation == null || invitation.getInviter() == player) {
-                chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
+                ChatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
                 return true;
             }
 
@@ -47,7 +45,7 @@ public class InvitationCommands implements CommandExecutor {
 
             //Check if player has an open Invitation
             if (invitation == null || invitation.getInviter() == player) {
-                chatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
+                ChatApi.sendMessage(player, ChatApi.badColor + "Du hast keine offenen Einladungen!");
                 return true;
             }
 

@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class RpsMain implements CommandExecutor {
 
-    private final ChatApi chatApi = ChatApi.getInstance();
-
     public boolean onCommand(@NonNull CommandSender sender, @NonNull Command cmd, String label, String[] args) {
         // options for rps command: /rps computer, /rps player name, if computer: starts a rps game against computer, if {player name} ask challenged player if they want to play if yes: start game against them
         if (label.equalsIgnoreCase("rps")) {
@@ -24,7 +22,7 @@ public class RpsMain implements CommandExecutor {
             Player p1 = (Player) sender;
 
             if (args.length != 0 && args.length != 1) {
-                chatApi.sendMessage(p1, ChatApi.badColor + "Wrong input!");
+                ChatApi.sendMessage(p1, ChatApi.badColor + "Wrong input!");
             } else if (args.length == 0 || (args[0].equalsIgnoreCase("computer") || args[0].equalsIgnoreCase("c") || args[0].equalsIgnoreCase(p1.getName()))) {
                 Thread thread = new Thread("RpsThread") {
                     @Override
@@ -55,7 +53,7 @@ public class RpsMain implements CommandExecutor {
                         return false;
                     }
                 }
-                chatApi.sendMessage(p1, ChatApi.badColor + "There is no such player online.");
+                ChatApi.sendMessage(p1, ChatApi.badColor + "There is no such player online.");
             }
         }
         return false;

@@ -8,7 +8,8 @@ public class OneVersusOneGame extends MiniGame {
     private final Player challenger;
     private Player challenged;
 
-    public OneVersusOneGame(Player challenger) {
+    public OneVersusOneGame(int gameTimeLength, Player challenger) {
+        super(gameTimeLength);
         this.challenger = challenger;
     }
 

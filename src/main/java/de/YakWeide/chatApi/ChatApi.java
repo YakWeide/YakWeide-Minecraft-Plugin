@@ -29,8 +29,50 @@ public class ChatApi implements Listener {
         return chatApi_instance;
     }
 
+
+    public static String lastMessage(Player player) {
+        return getInstance()._lastMessage(player);
+    }
+
+    public static String nextMessage(Player player) {
+        return getInstance()._nextMessage(player);
+    }
+
+    public static void sendMessage(UUID id, String message) {
+        getInstance()._sendMessage(id, message);
+    }
+
+
+    public static String playerChatMessage(Player player, String message) {
+        return getInstance()._playerChatMessage(player, message);
+    }
+
+    public static void sendMessage(Player player, String message) {
+        getInstance()._sendMessage(player, message);
+    }
+
+
+    public static void broadcastMessage(String message) {
+        getInstance()._broadcastMessage(message);
+    }
+
+    public static String playerName(UUID id) {
+        return getInstance()._playerName(id);
+    }
+
+    public static String playerName(Player player) {
+        return getInstance()._playerName(player);
+    }
+
+    public static String playerName(String playerString) {
+        return getInstance()._playerName(playerString);
+    }
+
+
+
+
     //Returns the last message of the given Player
-    public String lastMessage(Player player) {
+    public String _lastMessage(Player player) {
         String lastMessage = lastMessageHashMap.get(player.getUniqueId());
         if (lastMessage == null || lastMessage.equals("")) {
             return null;
@@ -54,7 +96,7 @@ public class ChatApi implements Listener {
     }
 
     //Returns the next message of the given player, returns null after 60 seconds without a message
-    public String nextMessage(Player player) {
+    public String _nextMessage(Player player) {
         if (Bukkit.getServer().isPrimaryThread()) {
             sendMessage(player, badColor + "ChatApi.nextMessage() was aborted because it was called from the primary thread");
             return "ChatApi.nextMessage() was aborted because it was called from the primary thread";
@@ -79,34 +121,34 @@ public class ChatApi implements Listener {
         return lastMessage(player);
     }
 
-    public void sendMessage(Player p, String message) {
+    public void _sendMessage(Player p, String message) {
         p.sendMessage(prefix + message);
     }
 
-    public String playerChatMessage(Player p, String message) {
+    public String _playerChatMessage(Player p, String message) {
         return prefixColor + "[" + ChatColor.GOLD + p.getName() + prefixColor + "] " + message;
     }
 
-    public void sendMessage(UUID id, String message) {
+    public void _sendMessage(UUID id, String message) {
         Player p = Bukkit.getPlayer(id);
         if (p != null) sendMessage(p, message);
     }
 
-    public void BroadcastMessage(String message) {
+    public void _broadcastMessage(String message) {
         for (Player p : Bukkit.getOnlinePlayers()) {
             sendMessage(p, message);
         }
     }
 
-    public String playerName(Player p) {
+    public String _playerName(Player p) {
         return playerColor + p.getName() + prefixColor;
     }
 
-    public String playerName(String playerString) {
+    public String _playerName(String playerString) {
         return playerColor + playerString;
     }
 
-    public String playerName(UUID id) {
+    public String _playerName(UUID id) {
         Player p = Bukkit.getPlayer(id);
         if (p != null) return playerName(p);
         return "";
